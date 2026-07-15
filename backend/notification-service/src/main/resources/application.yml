@@ -1,0 +1,25 @@
+server:
+  port: 7085
+
+spring:
+  application:
+    name: notification-service
+
+azure:
+  servicebus:
+    connection-string: ${AZURE_SERVICEBUS_CONNECTION_STRING:}
+    queue-name: ${AZURE_SERVICEBUS_QUEUE:notifications}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+

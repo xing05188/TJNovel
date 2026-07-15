@@ -1,0 +1,53 @@
+server:
+  port: 7083
+
+spring:
+  application:
+    name: transaction-service
+  datasource:
+    url: jdbc:mysql://mydatabase123.mysql.database.azure.com:3306/transactiondb?useSSL=true&requireSSL=true&serverTimezone=Asia/Shanghai
+    username:
+    password: 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+
+# 支付宝沙盒配置
+alipay:
+  server-url: https://openapi-sandbox.dl.alipaydev.com/gateway.do
+  app-id: 
+  private-key:
+  alipay-public-key: 
+  notify-url: 
+  return-url: chargelink://payment/return
+  charset: UTF-8
+  sign-type: RSA2
+  format: json
+
+# 应用基础URL配置（用于支付宝回调，指向API网关）
+app:
+  base-url: http://localhost:7080
+
+# 服务地址配置（从环境变量读取，Docker 环境使用服务名）
+services:
+  user: ${SERVICES_USER:http://localhost:7081}
+  content: ${SERVICES_CONTENT:http://localhost:7082}
+

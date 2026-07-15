@@ -1,0 +1,31 @@
+server:
+  port: 7080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      default-filters:
+        - RemoveRequestHeader=Cookie
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+services:
+  user: ${SERVICES_USER:http://localhost:7081}
+  content: ${SERVICES_CONTENT:http://localhost:7082}
+  transaction: ${SERVICES_TRANSACTION:http://localhost:7083}
+  admin: ${SERVICES_ADMIN:http://localhost:7084}
+  notification: ${SERVICES_NOTIFICATION:http://localhost:7085}
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+

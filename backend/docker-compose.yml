@@ -1,0 +1,112 @@
+name: ournovel2
+
+services:
+  # API Gateway
+  api-gateway:
+    image: ournovel/api-gateway:local
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    container_name: api-gateway
+    ports:
+      - "7080:7080"
+    environment:
+      - SERVICES_USER=http://user-service:7081
+      - SERVICES_CONTENT=http://content-service:7082
+      - SERVICES_TRANSACTION=http://transaction-service:7083
+      - SERVICES_ADMIN=http://admin-service:7084
+      - SERVICES_NOTIFICATION=http://notification-service:7085
+    depends_on:
+      - user-service
+      - content-service
+      - transaction-service
+      - admin-service
+      - notification-service
+    networks:
+      - microservices-network
+
+  # User Service
+  user-service:
+    image: ournovel/user-service:local
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    container_name: user-service
+    ports:
+      - "7081:7081"
+    environment:
+      - SPRING_DATASOURCE_URL=${USER_DB_URL:-jdbc:mysql://mydatabase123.mysql.database.azure.com:3306/userdb?useSSL=true&requireSSL=true}
+      - SPRING_DATASOURCE_USERNAME=${DB_USERNAME:-mynovel}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD:-12345678}
+    networks:
+      - microservices-network
+
+  # Content Service
+  content-service:
+    image: ournovel/content-service:local
+    build:
+      context: ./content-service
+      dockerfile: Dockerfile
+    container_name: content-service
+    ports:
+      - "7082:7082"
+    environment:
+      - SPRING_DATASOURCE_URL=${CONTENT_DB_URL:-jdbc:mysql://mydatabase123.mysql.database.azure.com:3306/contentdb?useSSL=true&requireSSL=true}
+      - SPRING_DATASOURCE_USERNAME=${DB_USERNAME:-mynovel}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD:-12345678}
+    networks:
+      - microservices-network
+
+  # Transaction Service
+  transaction-service:
+    image: ournovel/transaction-service:local
+    build:
+      context: ./transaction-service
+      dockerfile: Dockerfile
+    container_name: transaction-service
+    ports:
+      - "7083:7083"
+    environment:
+      - SPRING_DATASOURCE_URL=${TRANSACTION_DB_URL:-jdbc:mysql://mydatabase123.mysql.database.azure.com:3306/transactiondb?useSSL=true&requireSSL=true}
+      - SPRING_DATASOURCE_USERNAME=${DB_USERNAME:-mynovel}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD:-12345678}
+      - SERVICES_USER=http://user-service:7081
+      - SERVICES_CONTENT=http://content-service:7082
+    networks:
+      - microservices-network
+
+  # Admin Service
+  admin-service:
+    image: ournovel/admin-service:local
+    build:
+      context: ./admin-service
+      dockerfile: Dockerfile
+    container_name: admin-service
+    ports:
+      - "7084:7084"
+    environment:
+      - SPRING_DATASOURCE_URL=${ADMIN_DB_URL:-jdbc:mysql://mydatabase123.mysql.database.azure.com:3306/admindb?useSSL=true&requireSSL=true}
+      - SPRING_DATASOURCE_USERNAME=${DB_USERNAME:-mynovel}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD:-12345678}
+    networks:
+      - microservices-network
+
+  # Notification Service
+  notification-service:
+    image: ournovel/notification-service:local
+    build:
+      context: ./notification-service
+      dockerfile: Dockerfile
+    container_name: notification-service
+    ports:
+      - "7085:7085"
+    environment:
+      - AZURE_SERVICEBUS_CONNECTION_STRING=${AZURE_SERVICEBUS_CONNECTION_STRING:-}
+      - AZURE_SERVICEBUS_QUEUE=${AZURE_SERVICEBUS_QUEUE:-notifications}
+    networks:
+      - microservices-network
+
+networks:
+  microservices-network:
+    driver: bridge
+
