@@ -1,6 +1,6 @@
-# OurNovel API 文档
+# TJNovel API 文档
 
-本文档详细列出了 OurNovel 项目中所有的 API 接口，包括操作方法、URL、参数、功能描述和返回的Response body格式。
+本文档详细列出了 TJNovel 项目中所有的 API 接口，包括操作方法、URL、参数、功能描述和返回的Response body格式。
 
 ## 目录
 
@@ -375,4 +375,4 @@
 
 ---
 
-*本文档自动生成于 OurNovel 项目，包含所有控制器中定义的 API 接口。*
+*本文档自动生成于 TJNovel 项目，包含所有控制器中定义的 API 接口。*

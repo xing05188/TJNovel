@@ -54,7 +54,7 @@ $services = @(
 $buildFailed = $false
 foreach ($service in $services) {
     Write-Host "Building $($service.Name)..." -ForegroundColor Yellow
-    docker build -t "ournovel/$($service.Name):local" $service.Path
+    docker build -t "tjnovel/$($service.Name):local" $service.Path
     if ($LASTEXITCODE -ne 0) {
         Write-Host "Error: Failed to build $($service.Name)!" -ForegroundColor Red
         $buildFailed = $true
@@ -79,7 +79,7 @@ if ($buildFailed) {
     Write-Host "==========================================" -ForegroundColor Cyan
     Write-Host ""
     Write-Host "Image list:" -ForegroundColor Yellow
-    docker images | Select-String "ournovel"
+    docker images | Select-String "tjnovel"
     Write-Host ""
     Write-Host "Start services: docker-compose up -d" -ForegroundColor Cyan
     Write-Host ""

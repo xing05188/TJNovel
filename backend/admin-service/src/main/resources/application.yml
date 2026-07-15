@@ -5,7 +5,7 @@ spring:
   application:
     name: admin-service
   datasource:
-    url: jdbc:mysql://mydatabase123.mysql.database.azure.com:3306/admindb?useSSL=true&requireSSL=true
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/admindb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
     username: 
     password: 
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -29,4 +29,15 @@ springdoc:
   swagger-ui:
     path: /swagger-ui.html
     enabled: true
+
+# MyBatis-Plus 配置
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  type-aliases-package: edu.tongji.adminservice.entity
+  global-config:
+    db-config:
+      id-type: auto
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 

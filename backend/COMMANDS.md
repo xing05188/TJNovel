@@ -182,19 +182,19 @@ docker rm -f user-service
 docker images
 
 # 查看项目相关镜像
-docker images | Select-String "ournovel"
+docker images | Select-String "tjnovel"
 
 # 查看特定镜像
-docker images ournovel/api-gateway:local
+docker images tjnovel/api-gateway:local
 ```
 
 ### 删除镜像
 ```powershell
 # 删除特定镜像
-docker rmi ournovel/api-gateway:local
+docker rmi tjnovel/api-gateway:local
 
 # 强制删除镜像
-docker rmi -f ournovel/user-service:local
+docker rmi -f tjnovel/user-service:local
 
 # 删除所有未使用的镜像
 docker image prune -a
@@ -324,7 +324,7 @@ docker stats api-gateway user-service
 docker network ls
 
 # 查看项目网络详情
-docker network inspect ournovel2_microservices-network
+docker network inspect tjnovel_microservices-network
 ```
 
 ### 查看端口占用

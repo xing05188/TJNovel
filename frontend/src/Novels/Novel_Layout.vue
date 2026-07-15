@@ -131,7 +131,7 @@
         <!-- 底部信息 -->
         <footer class="footer">
             <div class="container">
-                <a href="https://github.com/ggyy1122/OurNovel/" target="_blank" class="github-link">
+                <a href="https://github.com/ggyy1122/TJNovel/" target="_blank" class="github-link">
                     <i class="fa fa-github"></i>
                     <span> 欢迎访问我们的 GitHub仓库</span>
                 </a>

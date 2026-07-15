@@ -24,22 +24,22 @@ echo ""
 echo "[2/2] 构建Docker镜像..."
 echo ""
 
-docker build -t ournovel/api-gateway:local ./api-gateway
+docker build -t tjnovel/api-gateway:local ./api-gateway
 echo "✅ api-gateway 镜像构建完成"
 
-docker build -t ournovel/user-service:local ./user-service
+docker build -t tjnovel/user-service:local ./user-service
 echo "✅ user-service 镜像构建完成"
 
-docker build -t ournovel/content-service:local ./content-service
+docker build -t tjnovel/content-service:local ./content-service
 echo "✅ content-service 镜像构建完成"
 
-docker build -t ournovel/transaction-service:local ./transaction-service
+docker build -t tjnovel/transaction-service:local ./transaction-service
 echo "✅ transaction-service 镜像构建完成"
 
-docker build -t ournovel/admin-service:local ./admin-service
+docker build -t tjnovel/admin-service:local ./admin-service
 echo "✅ admin-service 镜像构建完成"
 
-docker build -t ournovel/notification-service:local ./notification-service
+docker build -t tjnovel/notification-service:local ./notification-service
 echo "✅ notification-service 镜像构建完成"
 
 echo ""
@@ -48,7 +48,7 @@ echo "  所有镜像构建完成！"
 echo "=========================================="
 echo ""
 echo "镜像列表："
-docker images | grep ournovel
+docker images | grep tjnovel
 echo ""
 echo "启动服务：docker-compose up -d"
 echo ""

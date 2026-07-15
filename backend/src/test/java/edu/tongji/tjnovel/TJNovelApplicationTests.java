@@ -1,10 +1,10 @@
-package edu.tongji.ournovel2;
+package edu.tongji.tjnovel;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class OurNovel2ApplicationTests {
+class TJNovelApplicationTests {
 
     @Test
     void contextLoads() {

@@ -129,8 +129,8 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyZWFkZXIxMjMiLCJyZWFkZXJJZCI6MSw
 ### 2. Token包含的信息
 - `readerName`：读者用户名
 - `readerId`：读者ID
-- `iss`：签发者（our-novel）
-- `aud`：受众（our-novel）
+- `iss`：签发者（tj-novel）
+- `aud`：受众（tj-novel）
 - `exp`：过期时间（2小时后）
 
 ### 3. Token使用方式
@@ -160,8 +160,8 @@ Token有效期为2小时，过期后需要重新登录。
 ### application.yml配置
 ```yaml
 jwt:
-  issuer: our-novel          # JWT签发者
-  audience: our-novel        # JWT受众
+  issuer: tj-novel          # JWT签发者
+  audience: tj-novel        # JWT受众
   key: your-256-bit-secret-key-here-must-be-at-least-32-characters-long  # JWT签名密钥（至少32字符）
   expiration: 7200000        # Token过期时间（毫秒），2小时 = 7200000
 ```

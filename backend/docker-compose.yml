@@ -1,9 +1,124 @@
-name: ournovel2
+name: tjnovel
 
 services:
+  # ==================== 基础设施服务 ====================
+
+  # MySQL 数据库（替代 Azure MySQL 进行本地开发）
+  mysql:
+    image: mysql:8.0
+    container_name: tjnovel-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root123}
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis 缓存
+  redis:
+    image: redis:7.2
+    container_name: tjnovel-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # RabbitMQ 消息队列（替代 Azure Service Bus）
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: tjnovel-rabbitmq
+    ports:
+      - "5672:5672"   # AMQP 协议端口
+      - "15672:15672" # 管理界面端口
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-tjnovel}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-tjnovel123}
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "check_port_connectivity"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  # Elasticsearch 全文检索引擎
+  elasticsearch:
+    image: elasticsearch:8.12.0
+    container_name: tjnovel-elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9200/_cluster/health"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+
+  # Kibana（ES 可视化工具，可选）
+  kibana:
+    image: kibana:8.12.0
+    container_name: tjnovel-kibana
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    networks:
+      - microservices-network
+
+  # MinIO 对象存储（替代 Azure Blob Storage）
+  minio:
+    image: minio/minio:latest
+    container_name: tjnovel-minio
+    ports:
+      - "9000:9000"   # API 端口
+      - "9001:9001"   # 管理界面端口
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin123}
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio-data:/data
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  # ==================== 微服务 ====================
+
   # API Gateway
   api-gateway:
-    image: ournovel/api-gateway:local
+    image: tjnovel/api-gateway:local
     build:
       context: ./api-gateway
       dockerfile: Dockerfile
@@ -27,7 +142,7 @@ services:
 
   # User Service
   user-service:
-    image: ournovel/user-service:local
+    image: tjnovel/user-service:local
     build:
       context: ./user-service
       dockerfile: Dockerfile
@@ -35,15 +150,25 @@ services:
     ports:
       - "7081:7081"
     environment:
-      - SPRING_DATASOURCE_URL=${USER_DB_URL:-jdbc:mysql://mydatabase123.mysql.database.azure.com:3306/userdb?useSSL=true&requireSSL=true}
-      - SPRING_DATASOURCE_USERNAME=${DB_USERNAME:-mynovel}
-      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD:-12345678}
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/userdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+      - SPRING_DATASOURCE_USERNAME=${DB_USERNAME:-root}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD:-root123}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - MINIO_ENDPOINT=http://minio:9000
+      - MINIO_ACCESS_KEY=${MINIO_ROOT_USER:-minioadmin}
+      - MINIO_SECRET_KEY=${MINIO_ROOT_PASSWORD:-minioadmin123}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     networks:
       - microservices-network
 
   # Content Service
   content-service:
-    image: ournovel/content-service:local
+    image: tjnovel/content-service:local
     build:
       context: ./content-service
       dockerfile: Dockerfile
@@ -51,15 +176,31 @@ services:
     ports:
       - "7082:7082"
     environment:
-      - SPRING_DATASOURCE_URL=${CONTENT_DB_URL:-jdbc:mysql://mydatabase123.mysql.database.azure.com:3306/contentdb?useSSL=true&requireSSL=true}
-      - SPRING_DATASOURCE_USERNAME=${DB_USERNAME:-mynovel}
-      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD:-12345678}
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/contentdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+      - SPRING_DATASOURCE_USERNAME=${DB_USERNAME:-root}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD:-root123}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - ELASTICSEARCH_HOST=elasticsearch
+      - ELASTICSEARCH_PORT=9200
+      - MINIO_ENDPOINT=http://minio:9000
+      - MINIO_ACCESS_KEY=${MINIO_ROOT_USER:-minioadmin}
+      - MINIO_SECRET_KEY=${MINIO_ROOT_PASSWORD:-minioadmin123}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
     networks:
       - microservices-network
 
   # Transaction Service
   transaction-service:
-    image: ournovel/transaction-service:local
+    image: tjnovel/transaction-service:local
     build:
       context: ./transaction-service
       dockerfile: Dockerfile
@@ -67,17 +208,24 @@ services:
     ports:
       - "7083:7083"
     environment:
-      - SPRING_DATASOURCE_URL=${TRANSACTION_DB_URL:-jdbc:mysql://mydatabase123.mysql.database.azure.com:3306/transactiondb?useSSL=true&requireSSL=true}
-      - SPRING_DATASOURCE_USERNAME=${DB_USERNAME:-mynovel}
-      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD:-12345678}
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/transactiondb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+      - SPRING_DATASOURCE_USERNAME=${DB_USERNAME:-root}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD:-root123}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
       - SERVICES_USER=http://user-service:7081
       - SERVICES_CONTENT=http://content-service:7082
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     networks:
       - microservices-network
 
   # Admin Service
   admin-service:
-    image: ournovel/admin-service:local
+    image: tjnovel/admin-service:local
     build:
       context: ./admin-service
       dockerfile: Dockerfile
@@ -85,15 +233,22 @@ services:
     ports:
       - "7084:7084"
     environment:
-      - SPRING_DATASOURCE_URL=${ADMIN_DB_URL:-jdbc:mysql://mydatabase123.mysql.database.azure.com:3306/admindb?useSSL=true&requireSSL=true}
-      - SPRING_DATASOURCE_USERNAME=${DB_USERNAME:-mynovel}
-      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD:-12345678}
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/admindb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+      - SPRING_DATASOURCE_USERNAME=${DB_USERNAME:-root}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD:-root123}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     networks:
       - microservices-network
 
   # Notification Service
   notification-service:
-    image: ournovel/notification-service:local
+    image: tjnovel/notification-service:local
     build:
       context: ./notification-service
       dockerfile: Dockerfile
@@ -101,8 +256,15 @@ services:
     ports:
       - "7085:7085"
     environment:
-      - AZURE_SERVICEBUS_CONNECTION_STRING=${AZURE_SERVICEBUS_CONNECTION_STRING:-}
-      - AZURE_SERVICEBUS_QUEUE=${AZURE_SERVICEBUS_QUEUE:-notifications}
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - SPRING_RABBITMQ_PORT=5672
+      - SPRING_RABBITMQ_USERNAME=${RABBITMQ_USER:-tjnovel}
+      - SPRING_RABBITMQ_PASSWORD=${RABBITMQ_PASSWORD:-tjnovel123}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
     networks:
       - microservices-network
 
@@ -110,3 +272,9 @@ networks:
   microservices-network:
     driver: bridge
 
+volumes:
+  mysql-data:
+  redis-data:
+  rabbitmq-data:
+  elasticsearch-data:
+  minio-data:
