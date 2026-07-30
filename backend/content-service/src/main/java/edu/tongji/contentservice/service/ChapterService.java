@@ -15,14 +15,17 @@ public class ChapterService {
     private final ChapterRepository chapterRepository;
     private final AdminServiceClient adminServiceClient;
     private final NovelService novelService;
+    private final NotificationProducer notificationProducer;
 
     @Autowired
     public ChapterService(ChapterRepository chapterRepository, 
                           AdminServiceClient adminServiceClient,
-                          NovelService novelService) {
+                          NovelService novelService,
+                          NotificationProducer notificationProducer) {
         this.chapterRepository = chapterRepository;
         this.adminServiceClient = adminServiceClient;
         this.novelService = novelService;
+        this.notificationProducer = notificationProducer;
     }
 
     /**
@@ -114,6 +117,7 @@ public class ChapterService {
         // 如果是已发布状态，更新小说总字数
         if ("已发布".equals(saved.getStatus())) {
             novelService.updateNovelTotalWordCount(saved.getNovelId());
+            notifyNovelUpdate(saved.getNovelId(), saved.getTitle());
         }
         
         return saved;
@@ -158,6 +162,7 @@ public class ChapterService {
             // 如果是已发布状态，更新小说总字数
             if ("已发布".equals(saved.getStatus())) {
                 novelService.updateNovelTotalWordCount(saved.getNovelId());
+                notifyNovelUpdate(saved.getNovelId(), saved.getTitle());
             }
             
             return Optional.of(saved);
@@ -235,5 +240,20 @@ public class ChapterService {
             return Optional.of(saved);
         }
         return Optional.empty();
+    }
+
+    /**
+     * 章节发布时，通过 RabbitMQ 异步广播"小说更新通知"。
+     * 仅取小说标题与作者 ID 用于消息体，失败不影响主流程。
+     */
+    private void notifyNovelUpdate(Long novelId, String chapterTitle) {
+        try {
+            novelService.getNovelById(novelId).ifPresent(novel ->
+                    notificationProducer.publishNovelUpdate(
+                            novelId, novel.getTitle(), chapterTitle, novel.getAuthorId()));
+        } catch (Exception e) {
+            // 通知为异步增强能力，异常不应影响章节发布主流程
+            System.err.println("发布小说更新通知时发生异常: " + e.getMessage());
+        }
     }
 }

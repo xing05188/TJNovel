@@ -58,6 +58,9 @@ public class PurchaseService {
     @Autowired
     private WebClient contentServiceWebClient;
 
+    @Autowired
+    private OrderEventProducer orderEventProducer;
+
     @PersistenceContext
     private EntityManager entityManager;
     
@@ -202,6 +205,22 @@ public class PurchaseService {
             }
             logger.info("更新作者收入成功，作者ID: {}, 增加金额: {}", 
                 authorId, chapterPrice);
+            
+            // 异步发布订单事件（订单回调）：通知读者本次购买结果
+            try {
+                Map<String, Object> orderData = new HashMap<>();
+                orderData.put("novelId", chapterPurchaseRequest.getNovelId());
+                orderData.put("chapterId", chapterPurchaseRequest.getChapterId());
+                orderData.put("amount", chapterPrice);
+                orderData.put("transactionId", transaction.getTransactionId());
+                orderEventProducer.publishOrderEvent(
+                        chapterPurchaseRequest.getReaderId(),
+                        "章节购买成功",
+                        "您已成功解锁章节，消费 " + chapterPrice + " 书币",
+                        orderData);
+            } catch (Exception e) {
+                logger.error("发布订单事件失败: {}", e.getMessage(), e);
+            }
             
             return true;
         } catch (Exception e) {

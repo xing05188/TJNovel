@@ -32,6 +32,9 @@ public class RechargeService {
     @Autowired
     private WebClient userServiceWebClient;
     
+    @Autowired
+    private OrderEventProducer orderEventProducer;
+    
     /**
      * 用户执行充值行为：创建交易，更新余额
      * @param rechargeRequest 充值请求
@@ -62,6 +65,21 @@ public class RechargeService {
         
         logger.info("充值处理成功，读者ID: {}, 充值金额: {}, 交易ID: {}", 
             readerId, amount, transaction.getTransactionId());
+        
+        // 异步发布订单事件（订单回调）：通知读者充值结果
+        try {
+            Map<String, Object> orderData = new HashMap<>();
+            orderData.put("amount", amount);
+            orderData.put("transactionId", transaction.getTransactionId());
+            orderEventProducer.publishOrderEvent(
+                    readerId,
+                    "充值成功",
+                    "您已成功充值 " + amount + " 元，书币已到账",
+                    orderData);
+        } catch (Exception e) {
+            logger.error("发布订单事件失败: {}", e.getMessage(), e);
+        }
+        
         return true;
     }
     

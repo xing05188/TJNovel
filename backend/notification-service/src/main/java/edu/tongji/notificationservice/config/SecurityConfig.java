@@ -13,7 +13,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(registry -> registry
-                        .requestMatchers("/notify/**", "/actuator/**", 
+                        .requestMatchers("/notify/**", "/ws/**", "/actuator/**", 
                                         "/swagger-ui/**", "/v3/api-docs/**",
                                         "/swagger-resources/**", "/webjars/**",
                                         "/swagger-ui.html", "/swagger-ui/index.html",

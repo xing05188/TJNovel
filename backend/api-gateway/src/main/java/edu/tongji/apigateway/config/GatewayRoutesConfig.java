@@ -346,6 +346,11 @@ public class GatewayRoutesConfig {
                         .path("/published/**")
                         .filters(f -> f.rewritePath("/published/(?<segment>.*)", "/novels/published/${segment}"))
                         .uri(contentService))
+                // WebSocket 通知推送路由：/ws/** -> notification-service:7085/ws/**
+                // 网关会自动透传 WebSocket 升级握手
+                .route("notification-ws-api", r -> r
+                        .path("/ws/**")
+                        .uri(notificationService))
                 .build();
     }
 }

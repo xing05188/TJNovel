@@ -31,13 +31,15 @@ public class NovelService {
     private final ChapterRepository chapterRepository;
     private final StorageService storageService;
     private final AdminServiceClient adminServiceClient;
+    private final NotificationProducer notificationProducer;
 
     @Autowired
-    public NovelService(NovelRepository novelRepository, ChapterRepository chapterRepository, StorageService storageService, AdminServiceClient adminServiceClient) {
+    public NovelService(NovelRepository novelRepository, ChapterRepository chapterRepository, StorageService storageService, AdminServiceClient adminServiceClient, NotificationProducer notificationProducer) {
         this.novelRepository = novelRepository;
         this.chapterRepository = chapterRepository;
         this.storageService = storageService;
         this.adminServiceClient = adminServiceClient;
+        this.notificationProducer = notificationProducer;
     }
 
     public List<Novel> getAllNovels() {
@@ -202,6 +204,20 @@ public class NovelService {
                 logger.error("调用admin-service记录小说管理操作时发生异常: {}", e.getMessage(), e);
                 // 不抛出异常，避免影响主要业务流程
             }
+        }
+
+        // 审核结果异步推送给作者（通过 RabbitMQ）
+        try {
+            boolean passed = "连载".equals(newStatus);
+            Long authorId = (original != null && original.getAuthorId() != null)
+                    ? original.getAuthorId()
+                    : target.getAuthorId();
+            String novelName = (original != null && original.getNovelName() != null)
+                    ? original.getNovelName()
+                    : target.getNovelName();
+            notificationProducer.publishAuditResult(authorId, novelName, passed, result);
+        } catch (Exception e) {
+            logger.error("发布审核结果推送时发生异常: {}", e.getMessage(), e);
         }
 
         return true;

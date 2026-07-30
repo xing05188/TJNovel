@@ -186,6 +186,10 @@ services:
       - MINIO_ENDPOINT=http://minio:9000
       - MINIO_ACCESS_KEY=${MINIO_ROOT_USER:-minioadmin}
       - MINIO_SECRET_KEY=${MINIO_ROOT_PASSWORD:-minioadmin123}
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - SPRING_RABBITMQ_PORT=5672
+      - SPRING_RABBITMQ_USERNAME=${RABBITMQ_USER:-tjnovel}
+      - SPRING_RABBITMQ_PASSWORD=${RABBITMQ_PASSWORD:-tjnovel123}
     depends_on:
       mysql:
         condition: service_healthy
@@ -194,6 +198,8 @@ services:
       elasticsearch:
         condition: service_healthy
       minio:
+        condition: service_healthy
+      rabbitmq:
         condition: service_healthy
     networks:
       - microservices-network
@@ -215,10 +221,16 @@ services:
       - REDIS_PORT=6379
       - SERVICES_USER=http://user-service:7081
       - SERVICES_CONTENT=http://content-service:7082
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - SPRING_RABBITMQ_PORT=5672
+      - SPRING_RABBITMQ_USERNAME=${RABBITMQ_USER:-tjnovel}
+      - SPRING_RABBITMQ_PASSWORD=${RABBITMQ_PASSWORD:-tjnovel123}
     depends_on:
       mysql:
         condition: service_healthy
       redis:
+        condition: service_healthy
+      rabbitmq:
         condition: service_healthy
     networks:
       - microservices-network

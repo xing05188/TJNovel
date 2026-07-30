@@ -9,93 +9,60 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * RabbitMQ 配置类（替代 Azure Service Bus）
+ * RabbitMQ 配置类（替代 Azure Service Bus）。
+ * 所有通知类型共用一个 TopicExchange，通过不同 routingKey 路由到三个独立队列。
  */
 @Configuration
 public class RabbitMQConfig {
 
-    /** 通知交换机名称 */
-    public static final String NOTIFICATION_EXCHANGE = "tjnovel.notification.exchange";
+    /** 统一交换机（所有服务共享，来自 common 的 MqConstants） */
+    public static final String EXCHANGE = MqConstants.EXCHANGE;
 
-    /** 通知队列名称 */
-    public static final String NOTIFICATION_QUEUE = "tjnovel.notification.queue";
-
-    /** 通知路由键 */
-    public static final String NOTIFICATION_ROUTING_KEY = "tjnovel.notification";
-
-    /** 小说更新交换机 */
-    public static final String NOVEL_UPDATE_EXCHANGE = "tjnovel.novel.update.exchange";
-
-    /** 小说更新队列 */
-    public static final String NOVEL_UPDATE_QUEUE = "tjnovel.novel.update.queue";
-
-    /** 小说更新路由键 */
-    public static final String NOVEL_UPDATE_ROUTING_KEY = "tjnovel.novel.update";
-
-    /** 订单事件交换机 */
-    public static final String ORDER_EVENT_EXCHANGE = "tjnovel.order.event.exchange";
-
-    /** 订单事件队列 */
-    public static final String ORDER_EVENT_QUEUE = "tjnovel.order.event.queue";
-
-    /** 订单事件路由键 */
-    public static final String ORDER_EVENT_ROUTING_KEY = "tjnovel.order.event";
-
-    // ==================== 通知交换机与队列 ====================
+    // ==================== 统一交换机 ====================
 
     @Bean
-    public TopicExchange notificationExchange() {
-        return new TopicExchange(NOTIFICATION_EXCHANGE);
+    public TopicExchange exchange() {
+        return new TopicExchange(EXCHANGE);
     }
+
+    // ==================== 三个队列（按 routingKey 隔离） ====================
 
     @Bean
     public Queue notificationQueue() {
-        return QueueBuilder.durable(NOTIFICATION_QUEUE).build();
-    }
-
-    @Bean
-    public Binding notificationBinding(Queue notificationQueue, TopicExchange notificationExchange) {
-        return BindingBuilder.bind(notificationQueue)
-                .to(notificationExchange)
-                .with(NOTIFICATION_ROUTING_KEY);
-    }
-
-    // ==================== 小说更新交换机与队列 ====================
-
-    @Bean
-    public TopicExchange novelUpdateExchange() {
-        return new TopicExchange(NOVEL_UPDATE_EXCHANGE);
+        return QueueBuilder.durable(MqConstants.NOTIFICATION_QUEUE).build();
     }
 
     @Bean
     public Queue novelUpdateQueue() {
-        return QueueBuilder.durable(NOVEL_UPDATE_QUEUE).build();
-    }
-
-    @Bean
-    public Binding novelUpdateBinding(Queue novelUpdateQueue, TopicExchange novelUpdateExchange) {
-        return BindingBuilder.bind(novelUpdateQueue)
-                .to(novelUpdateExchange)
-                .with(NOVEL_UPDATE_ROUTING_KEY);
-    }
-
-    // ==================== 订单事件交换机与队列 ====================
-
-    @Bean
-    public TopicExchange orderEventExchange() {
-        return new TopicExchange(ORDER_EVENT_EXCHANGE);
+        return QueueBuilder.durable(MqConstants.NOVEL_UPDATE_QUEUE).build();
     }
 
     @Bean
     public Queue orderEventQueue() {
-        return QueueBuilder.durable(ORDER_EVENT_QUEUE).build();
+        return QueueBuilder.durable(MqConstants.ORDER_EVENT_QUEUE).build();
+    }
+
+    // ==================== 绑定：routingKey -> 队列 ====================
+
+    @Bean
+    public Binding notificationBinding() {
+        return BindingBuilder.bind(notificationQueue())
+                .to(exchange())
+                .with(MqConstants.NOTIFICATION_ROUTING_KEY);
     }
 
     @Bean
-    public Binding orderEventBinding(Queue orderEventQueue, TopicExchange orderEventExchange) {
-        return BindingBuilder.bind(orderEventQueue)
-                .to(orderEventExchange)
-                .with(ORDER_EVENT_ROUTING_KEY);
+    public Binding novelUpdateBinding() {
+        return BindingBuilder.bind(novelUpdateQueue())
+                .to(exchange())
+                .with(MqConstants.NOVEL_UPDATE_ROUTING_KEY);
+    }
+
+    @Bean
+    public Binding orderEventBinding() {
+        return BindingBuilder.bind(orderEventQueue())
+                .to(exchange())
+                .with(MqConstants.ORDER_EVENT_ROUTING_KEY);
     }
 
     // ==================== 通用配置 ====================
