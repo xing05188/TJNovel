@@ -1,6 +1,7 @@
 package edu.tongji.contentservice.document;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
@@ -36,6 +37,9 @@ public class ChapterDocument {
 
     @Field(type = FieldType.Date)
     private Date publishTime;
+
+    @Transient
+    private String highlight; // 关键词高亮片段（<em> 包裹），不参与 ES 索引，仅用于接口返回
 
     public ChapterDocument() {}
 
@@ -101,5 +105,13 @@ public class ChapterDocument {
 
     public void setPublishTime(Date publishTime) {
         this.publishTime = publishTime;
+    }
+
+    public String getHighlight() {
+        return highlight;
+    }
+
+    public void setHighlight(String highlight) {
+        this.highlight = highlight;
     }
 }

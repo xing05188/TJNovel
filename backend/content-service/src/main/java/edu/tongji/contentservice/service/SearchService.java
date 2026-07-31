@@ -9,10 +9,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.elasticsearch.client.elc.ElasticsearchTemplate;
+import org.springframework.data.elasticsearch.core.SearchHit;
+import org.springframework.data.elasticsearch.core.SearchHits;
 import org.springframework.data.elasticsearch.core.query.NativeQuery;
 import org.springframework.stereotype.Service;
 
@@ -44,7 +47,8 @@ public class SearchService {
      */
     public Page<NovelDocument> searchNovels(String keyword, int page, int size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "score"));
-        return novelSearchRepository.findByNovelNameContainingOrIntroductionContaining(keyword, keyword, pageable);
+        return novelSearchRepository
+                .findByNovelNameContainingOrIntroductionContainingOrAuthorNameContaining(keyword, keyword, keyword, pageable);
     }
 
     /**
@@ -68,7 +72,7 @@ public class SearchService {
         // 关键词搜索（名称或简介）
         if (keyword != null && !keyword.isEmpty()) {
             boolQuery.must(m -> m.multiMatch(mt -> mt
-                    .fields("novelName^3", "introduction")
+                    .fields("novelName^3", "authorName^2", "introduction")
                     .query(keyword)));
         }
 
@@ -100,11 +104,25 @@ public class SearchService {
     }
 
     /**
-     * 搜索章节内容
+     * 搜索章节内容（带关键词高亮：命中片段用 <em> 标签包裹返回）
      */
     public Page<ChapterDocument> searchChapters(String keyword, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        return chapterSearchRepository.findByContentContaining(keyword, pageable);
+        var query = NativeQuery.builder()
+                .withQuery(q -> q.match(m -> m.field("content").query(keyword)))
+                .withPageable(pageable)
+                .withHighlight(h -> h.fields(f -> f.field("content")
+                        .preTags("<em>").postTags("</em>")))
+                .build();
+        SearchHits<ChapterDocument> hits = elasticsearchTemplate.search(query, ChapterDocument.class);
+        List<ChapterDocument> list = hits.getSearchHits().stream().map(hit -> {
+            ChapterDocument doc = hit.getContent();
+            if (hit.getHighlightFields() != null && hit.getHighlightFields().containsKey("content")) {
+                doc.setHighlight(String.join(" ... ", hit.getHighlightFields().get("content").getValues()));
+            }
+            return doc;
+        }).toList();
+        return new PageImpl<>(list, pageable, hits.getTotalHits());
     }
 
     /**

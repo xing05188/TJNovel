@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -46,15 +49,18 @@ public class NovelService {
         return novelRepository.findAll();
     }
 
+    @Cacheable(value = "novel", key = "#id", unless = "#result == null")
     public Optional<Novel> getNovelById(Long id) {
         return novelRepository.findById(id);
     }
 
+    @CacheEvict(value = "publishedNovels", allEntries = true)
     public Novel createNovel(Novel novel) {
         novel.setCreateTime(new Date());
         return novelRepository.save(novel);
     }
 
+    @CacheEvict(value = "novel", key = "#id")
     public Novel updateNovel(Long id, Novel novelDetails) {
         Optional<Novel> optionalNovel = novelRepository.findById(id);
         if (optionalNovel.isPresent()) {
@@ -93,6 +99,7 @@ public class NovelService {
         return null;
     }
 
+    @CacheEvict(value = "novel", key = "#id")
     public boolean deleteNovel(Long id) {
         if (novelRepository.existsById(id)) {
             novelRepository.deleteById(id);
@@ -130,6 +137,10 @@ public class NovelService {
      * - 其他状态：默认直接写到当前记录
      * - 所有审核操作均记录管理日志（日志绑定到“原稿”小说上）
      */
+    @Caching(evict = {
+            @CacheEvict(value = "novel", key = "#id"),
+            @CacheEvict(value = "publishedNovels", allEntries = true)
+    })
     public boolean reviewNovel(Long id, String newStatus, Long managerId, String result) {
         Optional<Novel> optionalNovel = novelRepository.findById(id);
         if (optionalNovel.isEmpty()) {
@@ -246,6 +257,7 @@ public class NovelService {
      * - 对于已发布小说的“内容修改”，返回原稿（保持原样），前端只收到“已提交审核”的提示；
      * - 其他情况返回被修改的那一条记录。
      */
+    @CacheEvict(value = "novel", key = "#originalNovelId")
     public Novel editNovel(Long originalNovelId, NovelEditDto editedDto) {
         Optional<Novel> optionalNovel = novelRepository.findById(originalNovelId);
         if (optionalNovel.isEmpty()) {
@@ -444,6 +456,7 @@ public class NovelService {
      * 获取所有已发布的小说
      * @return 已发布小说列表
      */
+    @Cacheable(value = "publishedNovels")
     public List<Novel> getAllPublishedNovels() {
         return novelRepository.findAllPublishedNovels();
     }

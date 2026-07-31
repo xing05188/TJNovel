@@ -150,6 +150,7 @@ public class RechargeController {
             RechargeRequestDto rechargeRequest = new RechargeRequestDto();
             rechargeRequest.setReaderId(readerId);
             rechargeRequest.setAmount(amount);
+            rechargeRequest.setOutTradeNo(outTradeNo);
             
             try {
                 boolean success = rechargeService.processRecharge(rechargeRequest);

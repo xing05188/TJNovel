@@ -23,6 +23,12 @@ public interface NovelSearchRepository extends ElasticsearchRepository<NovelDocu
     Page<NovelDocument> findByNovelNameContainingOrIntroductionContaining(String name, String introduction, Pageable pageable);
 
     /**
+     * 按小说名或简介或作者名模糊搜索
+     */
+    Page<NovelDocument> findByNovelNameContainingOrIntroductionContainingOrAuthorNameContaining(
+            String novelName, String introduction, String authorName, Pageable pageable);
+
+    /**
      * 按分类搜索
      */
     Page<NovelDocument> findByCategoryName(String categoryName, Pageable pageable);

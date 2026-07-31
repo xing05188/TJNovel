@@ -45,6 +45,9 @@ public class RewardService {
     @Autowired
     private WebClient contentServiceWebClient;
     
+    @Autowired
+    private DistributedLockService distributedLockService;
+    
     @PersistenceContext
     private EntityManager entityManager;
     
@@ -63,6 +66,39 @@ public class RewardService {
      */
     @Transactional
     public boolean processReward(RewardRequestDto rewardRequest) {
+        Long readerId = rewardRequest.getReaderId();
+        Long novelId = rewardRequest.getNovelId();
+        BigDecimal amount = rewardRequest.getAmount();
+
+        // 防重复打赏：同一「读者+小说+金额」在 5 秒内重复请求视为重复点击
+        String idempotentKey = "reward:idempotent:" + readerId + ":" + novelId + ":" + amount;
+        // 分布式锁：串行化同一「读者+小说」的并发打赏，避免并发重复扣币
+        String lockKey = "lock:reward:" + readerId + ":" + novelId;
+
+        if (!distributedLockService.tryLock(lockKey, 3, 10)) {
+            throw new RuntimeException("打赏处理繁忙，请稍后重试");
+        }
+        try {
+            if (distributedLockService.idempotentExists(idempotentKey)) {
+                logger.warn("打赏请求重复(幂等拦截)，readerId={}, novelId={}, amount={}", readerId, novelId, amount);
+                throw new RuntimeException("操作过于频繁，请勿重复打赏");
+            }
+
+            boolean success = doProcessReward(rewardRequest);
+            // 仅成功时写入幂等键，失败（如余额不足）不写，允许重试
+            if (success) {
+                distributedLockService.markIdempotent(idempotentKey, 5);
+            }
+            return success;
+        } finally {
+            distributedLockService.unlock(lockKey);
+        }
+    }
+
+    /**
+     * 实际打赏业务逻辑（已在外层加锁与幂等保护）
+     */
+    private boolean doProcessReward(RewardRequestDto rewardRequest) {
         try {
             // 1. 检查读者余额是否足够
             BigDecimal readerBalance = getReaderBalance(rewardRequest.getReaderId());

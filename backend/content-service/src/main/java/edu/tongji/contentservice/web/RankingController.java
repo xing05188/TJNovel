@@ -49,4 +49,13 @@ public class RankingController {
         List<Novel> ranking = rankingService.getScoreRanking(topN, status);
         return ResponseEntity.ok(ranking);
     }
+
+    @GetMapping("/read")
+    @Operation(summary = "获取阅读榜单前 n 名", description = "基于 Redis ZSet 实时累计阅读次数排行")
+    public ResponseEntity<List<Novel>> getReadRanking(
+            @Parameter(description = "排名数量", required = true) @RequestParam int topN,
+            @Parameter(description = "小说状态", required = false) @RequestParam(required = false) String status) {
+        List<Novel> ranking = rankingService.getReadRanking(topN, status);
+        return ResponseEntity.ok(ranking);
+    }
 }

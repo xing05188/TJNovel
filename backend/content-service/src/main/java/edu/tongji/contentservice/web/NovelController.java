@@ -8,6 +8,7 @@ import edu.tongji.contentservice.dto.NovelEditRequestDto;
 import edu.tongji.contentservice.dto.NovelReviewDto;
 import edu.tongji.contentservice.entity.Novel;
 import edu.tongji.contentservice.service.NovelService;
+import edu.tongji.contentservice.service.ReadingRankingService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -31,10 +32,12 @@ public class NovelController {
     private static final Logger logger = LoggerFactory.getLogger(NovelController.class);
     
     private final NovelService novelService;
+    private final ReadingRankingService readingRankingService;
 
     @Autowired
-    public NovelController(NovelService novelService) {
+    public NovelController(NovelService novelService, ReadingRankingService readingRankingService) {
         this.novelService = novelService;
+        this.readingRankingService = readingRankingService;
     }
 
     @GetMapping
@@ -48,6 +51,8 @@ public class NovelController {
     @Operation(summary = "根据ID获取小说", description = "通过小说ID获取特定小说的详细信息")
     public ResponseEntity<ApiResponse<Novel>> getNovelById(
             @Parameter(description = "小说ID") @PathVariable Long id) {
+        // 记录阅读行为（基于 Redis ZSet 计数，缓存命中也会统计）
+        readingRankingService.recordRead(id);
         Optional<Novel> novel = novelService.getNovelById(id);
         if (novel.isPresent()) {
             return ResponseEntity.ok(ApiResponse.ok("content-service", novel.get()));
