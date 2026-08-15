@@ -1,0 +1,18 @@
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'vue3-toastify@0.2.8',
+npm warn EBADENGINE   required: { node: '>=20', npm: '>=9.0.0' },
+npm warn EBADENGINE   current: { node: 'v18.19.1', npm: '10.8.2' }
+npm warn EBADENGINE }
+npm warn deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+npm warn deprecated @babel/plugin-proposal-class-properties@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-class-properties instead.
+npm warn deprecated @humanwhocodes/config-array@0.5.0: Use @eslint/config-array instead
+npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated consolidate@0.15.1: Please upgrade to consolidate v1.0.0+ as it has been modernized with several long-awaited fixes implemented. Maintenance is supported by Forward Email at https://forwardemail.net ; follow/watch https://github.com/ladjs/consolidate for updates and release changelog
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated vue3-pagination@1.0.16: This package has been migrated to [@hennge/vue3-pagination](https://www.npmjs.com/package/@hennge/vue3-pagination) and is no longer supported.
+npm warn deprecated @humanwhocodes/object-schema@1.2.1: Use @eslint/object-schema instead
+npm warn deprecated webpack-chain@6.5.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+npm warn deprecated eslint@7.32.0: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+
+added 975 packages in 1m

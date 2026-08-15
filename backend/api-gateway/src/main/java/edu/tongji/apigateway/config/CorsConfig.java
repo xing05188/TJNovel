@@ -15,8 +15,8 @@ public class CorsConfig {
     @Bean
     public CorsWebFilter corsWebFilter() {
         CorsConfiguration corsConfig = new CorsConfiguration();
-        // 使用 Collections.singletonList 避免重复值
-        corsConfig.setAllowedOrigins(Arrays.asList("http://localhost:7086", "http://4.233.147.12:7086", "http://xing.francecentral.cloudapp.azure.com:7086"));
+        // 允许所有来源（含本地前端 8086 等），与 allowCredentials(true) 兼容需用 allowedOriginPatterns
+        corsConfig.setAllowedOriginPatterns(Collections.singletonList("*"));
         corsConfig.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         corsConfig.setAllowedHeaders(Collections.singletonList("*"));
         corsConfig.setAllowCredentials(true);

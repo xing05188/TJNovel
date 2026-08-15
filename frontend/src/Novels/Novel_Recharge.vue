@@ -72,6 +72,17 @@
                     我同意《用户服务协议》
                 </label>
             </div>
+            <!-- 支付成功弹窗 -->
+            <div v-if="paymentSuccess" class="agreement-popup">
+                <div class="popup-content success-popup">
+                    <div class="success-icon">✓</div>
+                    <h3>支付成功</h3>
+                    <p class="success-desc">充值金额已到账，余额已更新</p>
+                    <p class="success-balance">当前余额：{{ accountBalance }}虚拟币</p>
+                    <button class="close-popup" @click="handleSuccessClose">好的</button>
+                </div>
+                <div class="popup-mask"></div>
+            </div>
             <!-- 协议弹窗 -->
             <div v-if="showAgreement" class="agreement-popup">
                 <div class="popup-content">
@@ -88,16 +99,17 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { startRecharge } from '@/API/Recharge_API'
 import { readerState } from '@/stores/index'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { toast } from "vue3-toastify"
 import "vue3-toastify/dist/index.css"
 import { getReaderBalance } from '@/API/Reader_API';
 
 const reader_state = readerState()
 const router = useRouter()
+const route = useRoute()
 const fixedAmounts = [
     { value: 10, points: 10 },
     { value: 20, points: 20 },
@@ -111,6 +123,14 @@ const customAmount = ref('')
 const agreed = ref(false)
 const showAgreement = ref(false)
 const accountBalance = ref(0);                        // 账号余额
+const paymentSuccess = ref(false)                      // 是否支付成功
+let pollTimer = null                                   // 支付结果轮询定时器
+let pollCount = 0                                      // 轮询次数计数（用于超时）
+let balanceBeforePay = 0                               // 支付前余额，用于对比
+let isPaying = false                                   // 是否有待确认的支付
+let checking = false                                   // 防止并发余额检查
+const POLL_INTERVAL = 3000                             // 轮询间隔（毫秒）
+const POLL_TIMEOUT = 100                               // 轮询超时次数（3s * 100 ≈ 5 分钟）
 
 const paymentAmount = computed(() => {
     if (selectedAmount.value === 'custom') {
@@ -134,15 +154,39 @@ function handle_return() {
         router.back();
     }
 }
+// 拉取余额并更新界面，返回当前余额数值
+async function fetchBalance() {
+    const balance = Number(await getReaderBalance(reader_state.readerId)) || 0
+    accountBalance.value = balance
+    return balance
+}
 const fetchReaderBalance = async () => {
     try {
-        const response = await getReaderBalance(reader_state.readerId)
-        // 后端返回 ApiResponse<BigDecimal>，axios 拦截器直接返回数值
-        accountBalance.value = Number(response) || 0
+        await fetchBalance()
         console.log('获取用户余额:', accountBalance.value)
     } catch (error) {
         console.error('获取用户余额失败:', error)
         accountBalance.value = 0
+    }
+}
+// 检查支付结果：余额大于支付前余额即视为支付成功
+async function checkPaymentStatus() {
+    if (checking) return
+    checking = true
+    try {
+        const balance = await fetchBalance()
+        // 已确认成功时仅刷新余额，避免重复弹窗
+        if (paymentSuccess.value) return
+        if (isPaying && balance > balanceBeforePay) {
+            stopPolling()
+            isPaying = false
+            paymentSuccess.value = true
+            toast("支付成功，余额已到账！", { type: "success", dangerouslyHTMLString: true })
+        }
+    } catch (error) {
+        console.error('检查余额失败:', error)
+    } finally {
+        checking = false
     }
 }
 async function handlePayment() {
@@ -170,12 +214,64 @@ async function handlePayment() {
         toast(`即将跳转到支付宝支付页面`, { type: "success", dangerouslyHTMLString: true })
         await new Promise(resolve => setTimeout(resolve, 1500))
         window.open(paymentUrl, '_blank')
+        // 记录支付前余额，并开始轮询支付结果
+        balanceBeforePay = accountBalance.value
+        isPaying = true
+        startPolling()
     } catch (error) {
         toast("充值失败，请稍后重试！", { type: "error", dangerouslyHTMLString: true })
     }
 }
-onMounted(() => {
-    fetchReaderBalance(); // 页面挂载后立即执行
+// 轮询余额变化，检测支付结果
+function startPolling() {
+    if (pollTimer) return
+    pollCount = 0
+    pollTimer = setInterval(() => {
+        pollCount++
+        if (pollCount > POLL_TIMEOUT) {
+            // 超时仍未确认到账，停止轮询（用户可刷新页面查看）
+            stopPolling()
+            isPaying = false
+            return
+        }
+        checkPaymentStatus()
+    }, POLL_INTERVAL)
+}
+function stopPolling() {
+    if (pollTimer) {
+        clearInterval(pollTimer)
+        pollTimer = null
+    }
+}
+function handleSuccessClose() {
+    paymentSuccess.value = false
+}
+// 页面重新获得焦点/可见时立即检查一次（支付宝窗口关闭或返回时触发）
+function onWindowFocus() {
+    if (isPaying) checkPaymentStatus()
+}
+function onVisibilityChange() {
+    if (!document.hidden && isPaying) checkPaymentStatus()
+}
+onMounted(async () => {
+    const query = route.query
+    // 支付宝同步回跳：URL 带 out_trade_no/trade_no 说明刚支付完成，直接确认成功并刷新余额
+    if (query.out_trade_no || query.trade_no) {
+        isPaying = true
+        paymentSuccess.value = true
+        startPolling()
+        // 清理 URL 参数，避免刷新页面重复触发
+        router.replace({ path: route.path, query: {} })
+    }
+    await fetchReaderBalance(); // 页面挂载后立即执行
+    if (isPaying && !paymentSuccess.value) checkPaymentStatus()
+    window.addEventListener('focus', onWindowFocus)
+    document.addEventListener('visibilitychange', onVisibilityChange)
+});
+onBeforeUnmount(() => {
+    stopPolling(); // 组件卸载时清理定时器
+    window.removeEventListener('focus', onWindowFocus)
+    document.removeEventListener('visibilitychange', onVisibilityChange)
 });
 
 
@@ -481,6 +577,7 @@ onMounted(() => {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    z-index: 2; /* 需盖过 popup-mask，否则遮罩会拦截按钮点击 */
     background: #ffffff;
     border-radius: 10px;
     box-shadow: 0 2px 20px #0002;
@@ -517,5 +614,34 @@ onMounted(() => {
     color: #fff;
     font-size: 1rem;
     cursor: pointer;
+}
+
+.success-popup {
+    align-items: center;
+}
+
+.success-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #52c41a;
+    color: #fff;
+    font-size: 2.2rem;
+    line-height: 64px;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.success-desc {
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.success-balance {
+    color: #d33d3d;
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 18px;
 }
 </style>

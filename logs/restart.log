@@ -1,0 +1,42 @@
++ BASE=/home/zhx/TJNovel/backend
++ LOG=/home/zhx/TJNovel/logs
+++ date +%T
++ echo '[12:01:58] stopping old services...'
+[12:01:58] stopping old services...
++ for svc in user-service content-service admin-service
++ pkill -f user-service/target/user-service-0.0.1-SNAPSHOT.jar
++ for svc in user-service content-service admin-service
++ pkill -f content-service/target/content-service-0.0.1-SNAPSHOT.jar
++ for svc in user-service content-service admin-service
++ pkill -f admin-service/target/admin-service-0.0.1-SNAPSHOT.jar
++ sleep 3
+++ date +%T
++ echo '[12:02:01] rebuilding...'
+[12:02:01] rebuilding...
++ cd /home/zhx/TJNovel/backend
++ ./mvnw package -DskipTests -q -pl user-service,content-service,admin-service -am
++ '[' 0 -ne 0 ']'
+++ date +%T
++ echo '[12:02:14] build OK, restarting services...'
+[12:02:14] build OK, restarting services...
++ export SPRING_DATASOURCE_USERNAME=root SPRING_DATASOURCE_PASSWORD=root123
++ SPRING_DATASOURCE_USERNAME=root
++ SPRING_DATASOURCE_PASSWORD=root123
++ for svc in user-service content-service admin-service
++ nohup java -jar /home/zhx/TJNovel/backend/user-service/target/user-service-0.0.1-SNAPSHOT.jar
+++ date +%T
++ echo '[12:02:14] user-service started, PID 109768'
+[12:02:14] user-service started, PID 109768
++ for svc in user-service content-service admin-service
++ nohup java -jar /home/zhx/TJNovel/backend/content-service/target/content-service-0.0.1-SNAPSHOT.jar
+++ date +%T
++ echo '[12:02:14] content-service started, PID 109770'
+[12:02:14] content-service started, PID 109770
++ for svc in user-service content-service admin-service
++ nohup java -jar /home/zhx/TJNovel/backend/admin-service/target/admin-service-0.0.1-SNAPSHOT.jar
+++ date +%T
++ echo '[12:02:14] admin-service started, PID 109772'
+[12:02:14] admin-service started, PID 109772
+++ date +%T
++ echo '[12:02:14] ALL DONE'
+[12:02:14] ALL DONE

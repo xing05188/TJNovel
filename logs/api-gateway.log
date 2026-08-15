@@ -1,0 +1,681 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+2026-08-15T08:21:56.369Z  INFO 89119 --- [api-gateway] [           main] e.t.apigateway.ApiGatewayApplication     : Starting ApiGatewayApplication using Java 17.0.19 with PID 89119 (/home/zhx/TJNovel/backend/api-gateway/target/api-gateway-0.0.1-SNAPSHOT.jar started by zhx in /home/zhx/TJNovel/backend)
+2026-08-15T08:21:56.380Z  INFO 89119 --- [api-gateway] [           main] e.t.apigateway.ApiGatewayApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-08-15T08:22:01.781Z  INFO 89119 --- [api-gateway] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=91628295-e10f-3e5e-908f-65f4ac88b839
+2026-08-15T08:22:05.251Z  INFO 89119 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+2026-08-15T08:22:05.254Z  INFO 89119 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+2026-08-15T08:22:05.254Z  INFO 89119 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+2026-08-15T08:22:05.254Z  INFO 89119 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+2026-08-15T08:22:05.254Z  INFO 89119 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+2026-08-15T08:22:05.254Z  INFO 89119 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+2026-08-15T08:22:05.254Z  INFO 89119 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+2026-08-15T08:22:05.254Z  INFO 89119 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+2026-08-15T08:22:05.254Z  INFO 89119 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+2026-08-15T08:22:05.255Z  INFO 89119 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+2026-08-15T08:22:05.255Z  INFO 89119 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+2026-08-15T08:22:05.255Z  INFO 89119 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2026-08-15T08:22:05.255Z  INFO 89119 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+2026-08-15T08:22:05.255Z  INFO 89119 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2026-08-15T08:22:06.150Z  INFO 89119 --- [api-gateway] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-08-15T08:22:07.645Z  INFO 89119 --- [api-gateway] [           main] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 7080 (http)
+2026-08-15T08:22:07.910Z  INFO 89119 --- [api-gateway] [           main] e.t.apigateway.ApiGatewayApplication     : Started ApiGatewayApplication in 13.52 seconds (process running for 14.952)
+2026-08-15T08:24:32.154Z  WARN 89119 --- [api-gateway] [or-http-epoll-2] r.n.http.server.HttpServerOperations     : [ba7970b8, L:/127.0.0.1:7080 - R:/127.0.0.1:59326] Decoding failed: REQUEST(decodeResult: failure(java.net.URISyntaxException: Illegal character in path at index 36: http://localhost:8080/api/Chapter/1/[object%20Object]), version: HTTP/1.1)
+GET /api/Chapter/1/[object%20Object] HTTP/1.1
+x-forwarded-host: <filtered>
+x-forwarded-proto: <filtered>
+x-forwarded-port: <filtered>
+x-forwarded-for: <filtered>
+accept-language: <filtered>
+accept-encoding: <filtered>
+referer: <filtered>
+x-requested-with: <filtered>
+authorization: <filtered>
+accept: <filtered>
+user-agent: <filtered>
+connection: <filtered>
+host: <filtered>
+2026-08-15T08:24:36.287Z  WARN 89119 --- [api-gateway] [or-http-epoll-4] r.n.http.server.HttpServerOperations     : [241be7cf, L:/127.0.0.1:7080 - R:/127.0.0.1:59826] Decoding failed: REQUEST(decodeResult: failure(java.net.URISyntaxException: Illegal character in path at index 36: http://localhost:8080/api/Chapter/1/[object%20Object]), version: HTTP/1.1)
+GET /api/Chapter/1/[object%20Object] HTTP/1.1
+x-forwarded-host: <filtered>
+x-forwarded-proto: <filtered>
+x-forwarded-port: <filtered>
+x-forwarded-for: <filtered>
+accept-language: <filtered>
+accept-encoding: <filtered>
+referer: <filtered>
+x-requested-with: <filtered>
+authorization: <filtered>
+accept: <filtered>
+user-agent: <filtered>
+connection: <filtered>
+host: <filtered>
+2026-08-15T08:27:44.018Z ERROR 89119 --- [api-gateway] [or-http-epoll-3] a.w.r.e.AbstractErrorWebExceptionHandler : [d2159df8-178]  500 Server Error for HTTP GET "/api/Novel/34"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/34" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:44.023Z ERROR 89119 --- [api-gateway] [or-http-epoll-1] a.w.r.e.AbstractErrorWebExceptionHandler : [a4d5281c-180]  500 Server Error for HTTP GET "/api/Category"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Category" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:44.096Z ERROR 89119 --- [api-gateway] [or-http-epoll-4] a.w.r.e.AbstractErrorWebExceptionHandler : [80c95cfb-183]  500 Server Error for HTTP GET "/api/Novel/35"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/35" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:44.198Z ERROR 89119 --- [api-gateway] [or-http-epoll-1] a.w.r.e.AbstractErrorWebExceptionHandler : [960985c1-184]  500 Server Error for HTTP GET "/api/Novel/36"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/36" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:44.219Z ERROR 89119 --- [api-gateway] [or-http-epoll-2] a.w.r.e.AbstractErrorWebExceptionHandler : [0be27c33-185]  500 Server Error for HTTP GET "/api/Novel/37"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/37" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:44.296Z ERROR 89119 --- [api-gateway] [or-http-epoll-4] a.w.r.e.AbstractErrorWebExceptionHandler : [c687506f-187]  500 Server Error for HTTP GET "/api/Novel/38"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/38" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:44.303Z ERROR 89119 --- [api-gateway] [or-http-epoll-3] a.w.r.e.AbstractErrorWebExceptionHandler : [93e496c8-186]  500 Server Error for HTTP GET "/api/Novel/39"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/39" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:44.333Z ERROR 89119 --- [api-gateway] [or-http-epoll-1] a.w.r.e.AbstractErrorWebExceptionHandler : [28c6640d-188]  500 Server Error for HTTP GET "/api/Novel/40"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/40" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:44.334Z ERROR 89119 --- [api-gateway] [or-http-epoll-2] a.w.r.e.AbstractErrorWebExceptionHandler : [16da6067-189]  500 Server Error for HTTP GET "/api/Novel/41"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/41" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:44.431Z ERROR 89119 --- [api-gateway] [or-http-epoll-3] a.w.r.e.AbstractErrorWebExceptionHandler : [075bbf3d-190]  500 Server Error for HTTP GET "/api/Novel/published/filter-by-id?page=1&pageSize=6&category=%E5%8E%86%E5%8F%B2"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/published/filter-by-id?page=1&pageSize=6&category=%E5%8E%86%E5%8F%B2" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:44.577Z ERROR 89119 --- [api-gateway] [or-http-epoll-4] a.w.r.e.AbstractErrorWebExceptionHandler : [ad889237-191]  500 Server Error for HTTP GET "/api/Ranking/collect?topN=10"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Ranking/collect?topN=10" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:44.672Z ERROR 89119 --- [api-gateway] [or-http-epoll-3] a.w.r.e.AbstractErrorWebExceptionHandler : [60448c91-195]  500 Server Error for HTTP GET "/api/Novel/35"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/35" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:44.672Z ERROR 89119 --- [api-gateway] [or-http-epoll-4] a.w.r.e.AbstractErrorWebExceptionHandler : [d2b21bed-194]  500 Server Error for HTTP GET "/api/Ranking/recommend?topN=10"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Ranking/recommend?topN=10" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:44.666Z ERROR 89119 --- [api-gateway] [or-http-epoll-1] a.w.r.e.AbstractErrorWebExceptionHandler : [4df8e25a-192]  500 Server Error for HTTP GET "/api/Ranking/score?topN=10"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Ranking/score?topN=10" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:44.690Z ERROR 89119 --- [api-gateway] [or-http-epoll-1] a.w.r.e.AbstractErrorWebExceptionHandler : [2b36fc70-193]  500 Server Error for HTTP GET "/api/Novel/36"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/36" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:44.802Z ERROR 89119 --- [api-gateway] [or-http-epoll-2] a.w.r.e.AbstractErrorWebExceptionHandler : [59fba60c-197]  500 Server Error for HTTP GET "/api/Novel/37"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/37" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:44.916Z ERROR 89119 --- [api-gateway] [or-http-epoll-4] a.w.r.e.AbstractErrorWebExceptionHandler : [64dbf3aa-200]  500 Server Error for HTTP GET "/api/Novel/39"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/39" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:44.914Z ERROR 89119 --- [api-gateway] [or-http-epoll-3] a.w.r.e.AbstractErrorWebExceptionHandler : [72b42380-198]  500 Server Error for HTTP GET "/api/Novel/38"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/38" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:44.931Z ERROR 89119 --- [api-gateway] [or-http-epoll-2] a.w.r.e.AbstractErrorWebExceptionHandler : [4c54b1eb-201]  500 Server Error for HTTP GET "/api/Novel/41"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/41" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:44.928Z ERROR 89119 --- [api-gateway] [or-http-epoll-1] a.w.r.e.AbstractErrorWebExceptionHandler : [7aa73712-199]  500 Server Error for HTTP GET "/api/Novel/40"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/40" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:45.163Z ERROR 89119 --- [api-gateway] [or-http-epoll-3] a.w.r.e.AbstractErrorWebExceptionHandler : [12dcb19d-202]  500 Server Error for HTTP GET "/api/Novel/36"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/36" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:45.181Z ERROR 89119 --- [api-gateway] [or-http-epoll-2] a.w.r.e.AbstractErrorWebExceptionHandler : [87b0f69b-204]  500 Server Error for HTTP GET "/api/Novel/37"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/37" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:45.189Z ERROR 89119 --- [api-gateway] [or-http-epoll-4] a.w.r.e.AbstractErrorWebExceptionHandler : [cd765bf6-205]  500 Server Error for HTTP GET "/api/Novel/35"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/35" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:45.179Z ERROR 89119 --- [api-gateway] [or-http-epoll-1] a.w.r.e.AbstractErrorWebExceptionHandler : [3cba197d-203]  500 Server Error for HTTP GET "/api/Novel/34"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/34" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:45.198Z ERROR 89119 --- [api-gateway] [or-http-epoll-3] a.w.r.e.AbstractErrorWebExceptionHandler : [ef3e3645-207]  500 Server Error for HTTP GET "/api/Novel/33"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/33" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:45.195Z ERROR 89119 --- [api-gateway] [or-http-epoll-4] a.w.r.e.AbstractErrorWebExceptionHandler : [ca2dfb1a-206]  500 Server Error for HTTP GET "/api/Novel/32"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/32" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-08-15T08:27:45.407Z ERROR 89119 --- [api-gateway] [or-http-epoll-1] a.w.r.e.AbstractErrorWebExceptionHandler : [89754dd9-208]  500 Server Error for HTTP GET "/api/Novel/38"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed: Connection refused: localhost/127.0.0.1:7082
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/api/Novel/38" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed: Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:359) ~[netty-transport-native-unix-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:715) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:692) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:567) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:491) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:399) ~[netty-transport-classes-epoll-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.114.Final.jar!/:4.1.114.Final]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+

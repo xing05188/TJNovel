@@ -335,7 +335,7 @@ export function getFilteredNovels(
     isFinished = null
 ) {
     return request({
-        url: '/published/filter-by-id',
+        url: '/api/Novel/published/filter-by-id',
         method: 'get',
         params: {
             page,

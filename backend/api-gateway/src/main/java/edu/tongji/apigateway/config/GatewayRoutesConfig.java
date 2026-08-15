@@ -249,6 +249,13 @@ public class GatewayRoutesConfig {
                         .path("/api/Search/reader")
                         .filters(f -> f.rewritePath("/api/Search/reader", "/readers/search"))
                         .uri(userService))
+                // Elasticsearch全文搜索API路由：/api/search/** -> content-service:7082/search/**
+                // 例如：/api/search/novels?keyword=xxx -> http://localhost:7082/search/novels?keyword=xxx
+                // 注意：此路由使用小写 /api/search 前缀，与上方 /api/Search/novel（MySQL模糊搜索）区分
+                .route("es-search-api", r -> r
+                        .path("/api/search/**")
+                        .filters(f -> f.rewritePath("/api/search/(?<segment>.*)", "/search/${segment}"))
+                        .uri(contentService))
                 // 统计API路由：/api/Statistics/total-novels -> content-service:7082/novels/statistics/total-novels
                 .route("total-novels-statistics-api", r -> r
                         .path("/api/Statistics/total-novels")

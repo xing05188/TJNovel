@@ -14,8 +14,9 @@ let reconnectTimer = null
 let currentUserId = null
 
 function getWsBase() {
-  const base = process.env.VUE_APP_BASE_API || 'http://4.233.147.12:7080'
-  return base.replace(/^http/, 'ws')
+  // 空则使用相对路径，经 devServer 代理转发到本地网关的 /ws
+  const base = process.env.VUE_APP_BASE_API || ''
+  return base ? base.replace(/^http/, 'ws') : ''
 }
 
 function connect(userId) {

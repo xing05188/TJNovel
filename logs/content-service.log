@@ -1,0 +1,1247 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+2026-08-15T08:27:45.274Z  INFO 93791 --- [content-service] [           main] e.t.c.ContentServiceApplication          : Starting ContentServiceApplication using Java 17.0.19 with PID 93791 (/home/zhx/TJNovel/backend/content-service/target/content-service-0.0.1-SNAPSHOT.jar started by zhx in /home/zhx/TJNovel/backend)
+2026-08-15T08:27:45.282Z  INFO 93791 --- [content-service] [           main] e.t.c.ContentServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-08-15T08:27:48.431Z  INFO 93791 --- [content-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-08-15T08:27:48.437Z  INFO 93791 --- [content-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+2026-08-15T08:27:48.531Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.RateRepository; If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository
+2026-08-15T08:27:48.533Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.RankingRepository; If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository
+2026-08-15T08:27:48.535Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.CollectRepository; If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository
+2026-08-15T08:27:48.537Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.WholePurchaseRepository; If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository
+2026-08-15T08:27:48.539Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.CategoryRepository; If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository
+2026-08-15T08:27:48.541Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.NovelCategoryRepository; If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository
+2026-08-15T08:27:48.543Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.CommentRepository; If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository
+2026-08-15T08:27:48.544Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.CommentReplyRepository; If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository
+2026-08-15T08:27:48.546Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.LikesRepository; If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository
+2026-08-15T08:27:48.547Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.NovelRepository; If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository
+2026-08-15T08:27:49.151Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.RecommendRepository; If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository
+2026-08-15T08:27:49.156Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.ChapterRepository; If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository
+2026-08-15T08:27:49.158Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.ReportRepository; If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository
+2026-08-15T08:27:49.186Z  INFO 93791 --- [content-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 741 ms. Found 2 Elasticsearch repository interfaces.
+2026-08-15T08:27:49.201Z  INFO 93791 --- [content-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-08-15T08:27:49.203Z  INFO 93791 --- [content-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive Elasticsearch repositories in DEFAULT mode.
+2026-08-15T08:27:49.211Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.RateRepository; If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository
+2026-08-15T08:27:49.212Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.RankingRepository; If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository
+2026-08-15T08:27:49.212Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.CollectRepository; If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository
+2026-08-15T08:27:49.212Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.WholePurchaseRepository; If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository
+2026-08-15T08:27:49.213Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.CategoryRepository; If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository
+2026-08-15T08:27:49.213Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.NovelCategoryRepository; If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository
+2026-08-15T08:27:49.214Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.CommentRepository; If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository
+2026-08-15T08:27:49.214Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.CommentReplyRepository; If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository
+2026-08-15T08:27:49.214Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.LikesRepository; If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository
+2026-08-15T08:27:49.215Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.NovelRepository; If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository
+2026-08-15T08:27:49.219Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.RecommendRepository; If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository
+2026-08-15T08:27:49.221Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.ChapterRepository; If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository
+2026-08-15T08:27:49.221Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.ReportRepository; If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository
+2026-08-15T08:27:49.221Z  INFO 93791 --- [content-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 0 Reactive Elasticsearch repository interfaces.
+2026-08-15T08:27:49.253Z  INFO 93791 --- [content-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-08-15T08:27:49.255Z  INFO 93791 --- [content-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-15T08:27:49.291Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data JPA - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.NovelSearchRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: jakarta.persistence.Entity, jakarta.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+2026-08-15T08:27:49.295Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data JPA - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.ChapterSearchRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: jakarta.persistence.Entity, jakarta.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+2026-08-15T08:27:49.318Z  INFO 93791 --- [content-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 13 JPA repository interfaces.
+2026-08-15T08:27:49.352Z  INFO 93791 --- [content-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-08-15T08:27:49.355Z  INFO 93791 --- [content-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-08-15T08:27:49.387Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.RateRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-08-15T08:27:49.388Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.RankingRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-08-15T08:27:49.388Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.CollectRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-08-15T08:27:49.389Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.WholePurchaseRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-08-15T08:27:49.389Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.CategoryRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-08-15T08:27:49.389Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.NovelCategoryRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-08-15T08:27:49.390Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.CommentRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-08-15T08:27:49.390Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.CommentReplyRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-08-15T08:27:49.390Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.LikesRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-08-15T08:27:49.390Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.NovelRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-08-15T08:27:49.391Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.NovelSearchRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-08-15T08:27:49.391Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.RecommendRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-08-15T08:27:49.392Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.ChapterSearchRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-08-15T08:27:49.392Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.ChapterRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-08-15T08:27:49.392Z  INFO 93791 --- [content-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface edu.tongji.contentservice.repository.ReportRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-08-15T08:27:49.393Z  INFO 93791 --- [content-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19 ms. Found 0 Redis repository interfaces.
+2026-08-15T08:27:51.268Z  INFO 93791 --- [content-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 7082 (http)
+2026-08-15T08:27:51.292Z  INFO 93791 --- [content-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-15T08:27:51.292Z  INFO 93791 --- [content-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-08-15T08:27:51.378Z  INFO 93791 --- [content-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-08-15T08:27:51.381Z  INFO 93791 --- [content-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5975 ms
+2026-08-15T08:27:52.105Z  INFO 93791 --- [content-service] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-15T08:27:52.209Z  INFO 93791 --- [content-service] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-08-15T08:27:52.258Z  INFO 93791 --- [content-service] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-08-15T08:27:52.681Z  INFO 93791 --- [content-service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-15T08:27:52.725Z  INFO 93791 --- [content-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-15T08:27:52.950Z  INFO 93791 --- [content-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3113595e
+2026-08-15T08:27:52.953Z  INFO 93791 --- [content-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-15T08:27:53.019Z  WARN 93791 --- [content-service] [           main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-08-15T08:27:54.808Z  INFO 93791 --- [content-service] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: 
+    alter table chapter 
+       modify column content LONGTEXT
+Hibernate: 
+    alter table comments 
+       modify column content TEXT
+Hibernate: 
+    alter table novel 
+       modify column introduction TEXT
+2026-08-15T08:27:54.978Z  INFO 93791 --- [content-service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-15T08:27:55.639Z  INFO 93791 --- [content-service] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : JSqlParser is in classpath; If applicable, JSqlParser will be used.
+2026-08-15T08:27:55.640Z  INFO 93791 --- [content-service] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-15T08:27:59.890Z  INFO 93791 --- [content-service] [           main] org.redisson.Version                     : Redisson 3.33.0
+2026-08-15T08:28:00.529Z  INFO 93791 --- [content-service] [isson-netty-1-7] o.redisson.connection.ConnectionsHolder  : 1 connections initialized for localhost/127.0.0.1:6379
+2026-08-15T08:28:00.654Z  INFO 93791 --- [content-service] [sson-netty-1-20] o.redisson.connection.ConnectionsHolder  : 24 connections initialized for localhost/127.0.0.1:6379
+2026-08-15T08:28:02.264Z  INFO 93791 --- [content-service] [           main] e.t.c.service.DataSyncService            : 开始全量同步 MySQL 数据到 Elasticsearch...
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.status='连载' 
+        or n1_0.status='完结'
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+2026-08-15T08:28:03.894Z  INFO 93791 --- [content-service] [           main] e.t.c.service.DataSyncService            : 同步 22 部小说到 ES
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0
+2026-08-15T08:28:05.732Z  INFO 93791 --- [content-service] [           main] e.t.c.service.DataSyncService            : 同步 313 章到 ES
+2026-08-15T08:28:05.732Z  INFO 93791 --- [content-service] [           main] e.t.c.service.DataSyncService            : 全量同步完成
+2026-08-15T08:28:07.166Z  INFO 93791 --- [content-service] [           main] e.t.common.service.MinioStorageService   : MinIO 客户端初始化成功: endpoint=http://localhost:9000, bucket=tjnovel
+2026-08-15T08:28:07.646Z  WARN 93791 --- [content-service] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-15T08:28:07.739Z  WARN 93791 --- [content-service] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 7a4c59c9-642c-4159-82aa-1a91d67aa331
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-08-15T08:28:07.776Z  INFO 93791 --- [content-service] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-08-15T08:28:08.680Z  INFO 93791 --- [content-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+Logging initialized using 'class org.apache.ibatis.logging.stdout.StdOutImpl' adapter.
+Get /172.16.0.4 network interface 
+Get network interface info: name:eth0 (eth0)
+Initialization Sequence datacenterId:15 workerId:17
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.5.7 
+Can not find table primary key in Class: "edu.tongji.contentservice.entity.Likes".
+2026-08-15T08:28:10.456Z  WARN 93791 --- [content-service] [           main] c.b.m.core.injector.DefaultSqlInjector   : class edu.tongji.contentservice.entity.Likes ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+Can not find table primary key in Class: "edu.tongji.contentservice.entity.Rate".
+2026-08-15T08:28:10.609Z  WARN 93791 --- [content-service] [           main] c.b.m.core.injector.DefaultSqlInjector   : class edu.tongji.contentservice.entity.Rate ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+Can not find table primary key in Class: "edu.tongji.contentservice.entity.Comment".
+2026-08-15T08:28:10.684Z  WARN 93791 --- [content-service] [           main] c.b.m.core.injector.DefaultSqlInjector   : class edu.tongji.contentservice.entity.Comment ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+Can not find table primary key in Class: "edu.tongji.contentservice.entity.NovelCategory".
+2026-08-15T08:28:10.742Z  WARN 93791 --- [content-service] [           main] c.b.m.core.injector.DefaultSqlInjector   : class edu.tongji.contentservice.entity.NovelCategory ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+Can not find table primary key in Class: "edu.tongji.contentservice.entity.Chapter".
+2026-08-15T08:28:10.775Z  WARN 93791 --- [content-service] [           main] c.b.m.core.injector.DefaultSqlInjector   : class edu.tongji.contentservice.entity.Chapter ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+Can not find table primary key in Class: "edu.tongji.contentservice.entity.Recommend".
+2026-08-15T08:28:10.811Z  WARN 93791 --- [content-service] [           main] c.b.m.core.injector.DefaultSqlInjector   : class edu.tongji.contentservice.entity.Recommend ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+Can not find table primary key in Class: "edu.tongji.contentservice.entity.Collect".
+2026-08-15T08:28:10.843Z  WARN 93791 --- [content-service] [           main] c.b.m.core.injector.DefaultSqlInjector   : class edu.tongji.contentservice.entity.Collect ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+Can not find table primary key in Class: "edu.tongji.contentservice.entity.Novel".
+2026-08-15T08:28:10.876Z  WARN 93791 --- [content-service] [           main] c.b.m.core.injector.DefaultSqlInjector   : class edu.tongji.contentservice.entity.Novel ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+Can not find table primary key in Class: "edu.tongji.contentservice.entity.Report".
+2026-08-15T08:28:10.910Z  WARN 93791 --- [content-service] [           main] c.b.m.core.injector.DefaultSqlInjector   : class edu.tongji.contentservice.entity.Report ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+Can not find table primary key in Class: "edu.tongji.contentservice.entity.Category".
+2026-08-15T08:28:10.941Z  WARN 93791 --- [content-service] [           main] c.b.m.core.injector.DefaultSqlInjector   : class edu.tongji.contentservice.entity.Category ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+Can not find table primary key in Class: "edu.tongji.contentservice.entity.WholePurchase".
+2026-08-15T08:28:10.977Z  WARN 93791 --- [content-service] [           main] c.b.m.core.injector.DefaultSqlInjector   : class edu.tongji.contentservice.entity.WholePurchase ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+Can not find table primary key in Class: "edu.tongji.contentservice.entity.CommentReply".
+2026-08-15T08:28:11.013Z  WARN 93791 --- [content-service] [           main] c.b.m.core.injector.DefaultSqlInjector   : class edu.tongji.contentservice.entity.CommentReply ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2026-08-15T08:28:11.157Z  INFO 93791 --- [content-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 7082 (http) with context path '/'
+2026-08-15T08:28:11.213Z  INFO 93791 --- [content-service] [           main] e.t.c.ContentServiceApplication          : Started ContentServiceApplication in 26.899 seconds (process running for 27.93)
+2026-08-15T08:28:11.690Z  INFO 93791 --- [content-service] [nio-7082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-15T08:28:11.691Z  INFO 93791 --- [content-service] [nio-7082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-08-15T08:28:11.695Z  INFO 93791 --- [content-service] [nio-7082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2026-08-15T08:28:11.833Z  INFO 93791 --- [content-service] [nio-7082-exec-1] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-08-15T08:28:12.015Z  INFO 93791 --- [content-service] [nio-7082-exec-1] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#3a02d4bd:0/SimpleConnection@6a722081 [delegate=amqp://tjnovel@127.0.0.1:5672/, localPort=46984]
+2026-08-15T08:28:17.629Z  WARN 93791 --- [content-service] [nio-7082-exec-3] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-08-15T08:29:17.765Z  INFO 93791 --- [content-service] [io-7082-exec-10] e.t.contentservice.service.NovelService  : 通过关键词搜索小说: 星辰
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_name like ? escape ''
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.status in ('首次审核', '审核中')
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    update
+        chapter 
+    set
+        content=?,
+        is_charged=?,
+        price_per_kilo=?,
+        publish_time=?,
+        status=?,
+        title=?,
+        word_count=? 
+    where
+        chapter_id=? 
+        and novel_id=?
+Hibernate: 
+    select
+        coalesce(sum(c1_0.word_count), 0) 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.status='已发布'
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    update
+        novel 
+    set
+        author_id=?,
+        collected_count=?,
+        cover_url=?,
+        introduction=?,
+        novel_name=?,
+        original_novel_id=?,
+        recommend_count=?,
+        score=?,
+        status=?,
+        total_price=?,
+        total_word_count=? 
+    where
+        novel_id=?
+2026-08-15T08:33:05.359Z  INFO 93791 --- [content-service] [nio-7082-exec-7] e.t.contentservice.service.NovelService  : 更新小说总字数成功: novelId=1, totalWordCount=46384
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+2026-08-15T08:33:05.454Z  INFO 93791 --- [content-service] [nio-7082-exec-7] e.t.c.service.DataSyncService            : 同步小说 1 到 ES
+2026-08-15T08:33:05.476Z  INFO 93791 --- [content-service] [nio-7082-exec-7] e.t.c.service.NotificationProducer       : 小说更新通知已发布: novelId=1, chapter=第1章 孤注(ES同步测试)
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+2026-08-15T08:33:05.524Z  INFO 93791 --- [content-service] [nio-7082-exec-7] e.t.c.service.DataSyncService            : 同步章节 1:1 到 ES
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    update
+        chapter 
+    set
+        content=?,
+        is_charged=?,
+        price_per_kilo=?,
+        publish_time=?,
+        status=?,
+        title=?,
+        word_count=? 
+    where
+        chapter_id=? 
+        and novel_id=?
+Hibernate: 
+    select
+        coalesce(sum(c1_0.word_count), 0) 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.status='已发布'
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    update
+        novel 
+    set
+        author_id=?,
+        collected_count=?,
+        cover_url=?,
+        introduction=?,
+        novel_name=?,
+        original_novel_id=?,
+        recommend_count=?,
+        score=?,
+        status=?,
+        total_price=?,
+        total_word_count=? 
+    where
+        novel_id=?
+2026-08-15T08:34:49.923Z  INFO 93791 --- [content-service] [nio-7082-exec-9] e.t.contentservice.service.NovelService  : 更新小说总字数成功: novelId=1, totalWordCount=46416
+Hibernate: 
+    select
+        nc1_0.category_name,
+        nc1_0.novel_id 
+    from
+        novel_category nc1_0 
+    where
+        nc1_0.novel_id=?
+2026-08-15T08:34:49.996Z  INFO 93791 --- [content-service] [nio-7082-exec-9] e.t.c.service.DataSyncService            : 同步小说 1 到 ES
+2026-08-15T08:34:50.000Z  INFO 93791 --- [content-service] [nio-7082-exec-9] e.t.c.service.NotificationProducer       : 小说更新通知已发布: novelId=1, chapter=第1章 孤注
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+2026-08-15T08:34:50.068Z  INFO 93791 --- [content-service] [nio-7082-exec-9] e.t.c.service.DataSyncService            : 同步章节 1:1 到 ES
+Hibernate: 
+    select
+        c1_0.category_name 
+    from
+        category c1_0
+Hibernate: 
+    select
+        distinct n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    left join
+        novel_category nc1_0 
+            on n1_0.novel_id=nc1_0.novel_id 
+    where
+        (
+            n1_0.status='连载' 
+            or n1_0.status='完结'
+        ) 
+        and (
+            ? is null 
+            or nc1_0.category_name=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count>=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count<=?
+        ) 
+        and (
+            ? is null 
+            or (
+                ?=1 
+                and n1_0.status='完结'
+            ) 
+            or (
+                ?=0 
+                and n1_0.status='连载'
+            )
+        ) 
+    order by
+        n1_0.novel_id 
+    limit
+        ?
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.status=? 
+    order by
+        n1_0.collected_count desc 
+    limit
+        ?
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.status=? 
+    order by
+        n1_0.score desc 
+    limit
+        ?
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.status=? 
+    order by
+        n1_0.recommend_count desc 
+    limit
+        ?
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    select
+        wp1_0.novel_id,
+        wp1_0.reader_id 
+    from
+        wholepurchase wp1_0 
+    where
+        wp1_0.reader_id=? 
+        and wp1_0.novel_id=? 
+        and wp1_0.is_bought=? 
+    limit
+        ?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+    order by
+        c1_0.chapter_id
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        coalesce(sum(n1_0.total_word_count), 0) 
+    from
+        novel n1_0 
+    where
+        n1_0.author_id=?
+Hibernate: 
+    select
+        count(n1_0.novel_id) 
+    from
+        novel n1_0 
+    where
+        n1_0.author_id=?
+Hibernate: 
+    select
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    select
+        n1_0.recommend_count 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    select
+        count(*) 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    select
+        n1_0.collected_count 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    select
+        count(n1_0.novel_id) 
+    from
+        novel n1_0 
+    where
+        n1_0.author_id=?
+Hibernate: 
+    select
+        c1_0.category_name 
+    from
+        category c1_0 
+    where
+        c1_0.category_name in (select
+            nc1_0.category_name 
+        from
+            novel_category nc1_0 
+        where
+            nc1_0.novel_id=?)
+Hibernate: 
+    select
+        coalesce(sum(n1_0.total_word_count), 0) 
+    from
+        novel n1_0 
+    where
+        n1_0.author_id=?
+Hibernate: 
+    select
+        r1_0.novel_id,
+        r1_0.reader_id,
+        r1_0.score,
+        r1_0.rating_time 
+    from
+        rate r1_0 
+    where
+        r1_0.reader_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.status='已发布' 
+    order by
+        c1_0.chapter_id desc

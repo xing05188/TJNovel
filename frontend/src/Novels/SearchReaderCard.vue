@@ -49,6 +49,11 @@ function getFullAvatarUrl(avatarUrl) {
         return defaultAvatar
     }
     
+    // MinIO 内网地址(localhost:9000) → 走前端代理(8086)
+    if (avatarUrl.indexOf('localhost:9000') !== -1) {
+        return '/minio/' + avatarUrl.substring(avatarUrl.indexOf('localhost:9000/') + 'localhost:9000/'.length)
+    }
+    
     // 如果已经是完整URL，直接返回
     if (avatarUrl.startsWith('http://') || avatarUrl.startsWith('https://')) {
         return avatarUrl

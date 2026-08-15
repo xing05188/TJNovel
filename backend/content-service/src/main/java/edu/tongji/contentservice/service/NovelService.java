@@ -36,6 +36,9 @@ public class NovelService {
     private final AdminServiceClient adminServiceClient;
     private final NotificationProducer notificationProducer;
 
+    @Autowired(required = false)
+    private DataSyncService dataSyncService;
+
     @Autowired
     public NovelService(NovelRepository novelRepository, ChapterRepository chapterRepository, StorageService storageService, AdminServiceClient adminServiceClient, NotificationProducer notificationProducer) {
         this.novelRepository = novelRepository;
@@ -43,6 +46,25 @@ public class NovelService {
         this.storageService = storageService;
         this.adminServiceClient = adminServiceClient;
         this.notificationProducer = notificationProducer;
+    }
+
+    /**
+     * 小说数据变更后同步 ES 索引：仅"连载/完结"入库，其余状态移除索引
+     */
+    private void syncNovelIndex(Novel novel) {
+        if (dataSyncService == null || novel == null || novel.getNovelId() == null) {
+            return;
+        }
+        try {
+            String status = novel.getStatus();
+            if ("连载".equals(status) || "完结".equals(status)) {
+                dataSyncService.syncNovel(novel.getNovelId());
+            } else {
+                dataSyncService.deleteNovel(novel.getNovelId());
+            }
+        } catch (Exception e) {
+            logger.error("同步小说到 ES 失败: novelId={}, 原因: {}", novel.getNovelId(), e.getMessage());
+        }
     }
 
     public List<Novel> getAllNovels() {
@@ -103,6 +125,14 @@ public class NovelService {
     public boolean deleteNovel(Long id) {
         if (novelRepository.existsById(id)) {
             novelRepository.deleteById(id);
+            // 删除小说时同步移除 ES 索引
+            if (dataSyncService != null) {
+                try {
+                    dataSyncService.deleteNovel(id);
+                } catch (Exception e) {
+                    logger.error("删除小说 ES 索引失败: novelId={}, 原因: {}", id, e.getMessage());
+                }
+            }
             return true;
         }
         return false;
@@ -231,6 +261,11 @@ public class NovelService {
             logger.error("发布审核结果推送时发生异常: {}", e.getMessage(), e);
         }
 
+        // 审核后同步 ES 索引（连载入库，封禁/其他状态移除索引）
+        if (original != null && original.getNovelId() != null) {
+            syncNovelIndex(original);
+        }
+
         return true;
     }
 
@@ -241,6 +276,8 @@ public class NovelService {
             String coverUrl = storageService.uploadFile(coverFile, "covers");
             novel.setCoverUrl(coverUrl);
             novelRepository.save(novel);
+            // 封面上传后同步 ES 索引（连载/完结入库）
+            syncNovelIndex(novel);
             return coverUrl;
         }
         return null;
@@ -282,7 +319,10 @@ public class NovelService {
             if (!hasContentChange && editedDto.getStatus() != null) {
                 // 仅修改状态 -> 直接更新原稿状态
                 novel.setStatus(editedDto.getStatus());
-                return novelRepository.save(novel);
+                Novel saved = novelRepository.save(novel);
+                // 状态变化（连载->完结等）后同步 ES 索引
+                syncNovelIndex(saved);
+                return saved;
             } else if (hasContentChange) {
                 // 修改内容 -> 创建副本，副本进入“待审核”，原稿保持展示
                 Novel copy = new Novel();
@@ -504,6 +544,8 @@ public class NovelService {
             novel.setTotalWordCount(totalWordCount);
             novelRepository.save(novel);
             logger.info("更新小说总字数成功: novelId={}, totalWordCount={}", novelId, totalWordCount);
+            // 字数变化后同步 ES 索引（连载/完结入库）
+            syncNovelIndex(novel);
         }
     }
 }

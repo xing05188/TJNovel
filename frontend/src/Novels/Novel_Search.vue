@@ -52,6 +52,9 @@
                 <div class="filter-tab" :class="{ active: filter === 'novel' }" @click="changeFilter('novel')">
                     小说
                 </div>
+                <div class="filter-tab" :class="{ active: filter === 'chapter' }" @click="changeFilter('chapter')">
+                    章节内容
+                </div>
                 <div class="filter-tab" :class="{ active: filter === 'author' }" @click="changeFilter('author')">
                     作者
                 </div>
@@ -64,6 +67,9 @@
         <div class="results-container">
             <div v-if="filter === 'novel' && novels.length > 0" class="novel-results">
                 <SearchNovelCard v-for="novel in novels" :key="novel.novelId" :novel="novel" />
+            </div>
+            <div v-if="filter === 'chapter' && chapters.length > 0" class="chapter-results">
+                <SearchChapterCard v-for="chapter in chapters" :key="chapter.chapterId + '-' + chapter.novelId" :chapter="chapter" />
             </div>
             <div v-if="filter === 'author' && authors.length > 0" class="author-results">
                 <SearchAuthorCard v-for="author in authors" :key="author.authorId" :author="author" />
@@ -84,10 +90,11 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { searchNovels, searchAuthors, searchReaders } from '@/API/Search_API'
+import { searchAuthors, searchReaders, esSearchNovels, esSearchChapters } from '@/API/Search_API'
 import SearchNovelCard from '@/Novels/SearchNovelCard.vue'
 import SearchAuthorCard from '@/Novels/SearchAuthorCard.vue'
 import SearchReaderCard from '@/Novels/SearchReaderCard.vue'
+import SearchChapterCard from '@/Novels/SearchChapterCard.vue'
 import { current_state, readerState } from '@/stores/index';
 
 const route = useRoute()
@@ -97,6 +104,7 @@ const filter = ref('novel')
 const novels = ref([])
 const authors = ref([])
 const readers = ref([])
+const chapters = ref([])
 const isLoading = ref(false)
 const totalResults = ref(0)
 const noResults = ref(false)
@@ -148,14 +156,21 @@ const performSearch = async () => {
     novels.value = []
     authors.value = []
     readers.value = []
+    chapters.value = []
     try {
         switch (filter.value) {
             case 'novel': {
-                const novelResponse = await searchNovels(searchQuery.value)
-                novels.value = Array.isArray(novelResponse)
-                    ? novelResponse.filter(novel => novel.status === '连载' || novel.status === '完结')
-                    : []
-                totalResults.value = novels.value.length
+                // ES 全文检索：标题/简介/作者名 模糊搜索（比 MySQL LIKE 覆盖面更广）
+                const page = await esSearchNovels(searchQuery.value, 0, 20)
+                novels.value = (page && page.content) || []
+                totalResults.value = (page && page.totalElements) || 0
+                break
+            }
+            case 'chapter': {
+                // ES 章节内容搜索：返回带 <em> 高亮片段
+                const page = await esSearchChapters(searchQuery.value, 0, 20)
+                chapters.value = (page && page.content) || []
+                totalResults.value = (page && page.totalElements) || 0
                 break
             }
             case 'author': {

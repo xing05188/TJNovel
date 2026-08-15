@@ -33,7 +33,7 @@ public class SearchController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size) {
         Page<NovelDocument> result = searchService.searchNovels(keyword, page, size);
-        return ApiResponse.ok(result);
+        return ApiResponse.ok("content-service", result);
     }
 
     /**
@@ -45,7 +45,7 @@ public class SearchController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size) {
         Page<NovelDocument> result = searchService.searchNovelsByCategory(category, page, size);
-        return ApiResponse.ok(result);
+        return ApiResponse.ok("content-service", result);
     }
 
     /**
@@ -62,7 +62,7 @@ public class SearchController {
             @RequestParam(defaultValue = "20") int size) {
         Page<NovelDocument> result = searchService.advancedSearch(
                 keyword, category, minWordCount, maxWordCount, status, page, size);
-        return ApiResponse.ok(result);
+        return ApiResponse.ok("content-service", result);
     }
 
     /**
@@ -74,7 +74,7 @@ public class SearchController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size) {
         Page<ChapterDocument> result = searchService.searchChapters(keyword, page, size);
-        return ApiResponse.ok(result);
+        return ApiResponse.ok("content-service", result);
     }
 
     /**
@@ -86,7 +86,7 @@ public class SearchController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size) {
         Page<ChapterDocument> result = searchService.searchChapterTitles(keyword, page, size);
-        return ApiResponse.ok(result);
+        return ApiResponse.ok("content-service", result);
     }
 
     /**
@@ -95,6 +95,6 @@ public class SearchController {
     @GetMapping("/novels/{novelId}/chapters")
     public ApiResponse<List<ChapterDocument>> getNovelChapters(@PathVariable Long novelId) {
         List<ChapterDocument> chapters = searchService.getNovelChapters(novelId);
-        return ApiResponse.ok(chapters);
+        return ApiResponse.ok("content-service", chapters);
     }
 }

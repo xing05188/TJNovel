@@ -309,22 +309,19 @@
             <div class="zh-footer-partner">
                 <div class="zh-footer-title">合作伙伴</div>
                 <div class="zh-footer-partner-links">
-                    （按姓氏首字母排序）<br />
-                    董女士 ｜ 官先生 ｜ 关女士 <br />
-                    李女士 ｜ 乐女士 ｜ 于先生 <br />
-                    张女士 ｜ 郑先生 ｜ 周先生 ｜ 朱女士
+                    （按姓氏首字母排序）<br />周先生
                 </div>
             </div>
             <div class="zh-footer-main">
                 <div class="zh-footer-block">
                     <div class="zh-footer-block-title">出版合作联系</div>
                     <div class="zh-footer-block-row">
-                        <span>版权合作：关女士</span> <span>guan@hanhai.com</span><br />
-                        <span>剧本杀合作：朱女士</span> <span>zhu@hanhai.com</span>
+                        <span>版权合作：周先生</span> <span>2351289@tongji.edu.cn</span><br />
+                        <span>剧本杀合作：周先生</span> <span>2351289@tongji.edu.cn</span>
                     </div>
                     <div class="zh-footer-block-row">
-                        <span>有声合作：官先生</span> <span>guan@hanhai.com</span><br />
-                        <span>广告合作：周先生</span> <span>zhou@hanhai.com</span>
+                        <span>有声合作：周先生</span> <span>2351289@tongji.edu.cn</span><br />
+                        <span>广告合作：周先生</span> <span>2351289@tongji.edu.cn</span>
                     </div>
                 </div>
                 <div class="zh-footer-block">
@@ -342,7 +339,7 @@
                         <span>电话：4008765544</span>
                     </div>
                     <div class="zh-footer-block-row">
-                        <span>邮箱：jubao@hanhai.com</span>
+                        <span>邮箱：2351289@tongji.edu.cn</span>
                     </div>
                     <a target="_blank" class="image-link">
                         <img src="@/assets/logo.png" class="zh-footer-logo" alt="TJ小说网" loading="lazy"
@@ -359,10 +356,10 @@
                 沪ICP证100589号｜沪ICP备12007632号｜沪网文〔2023〕2156-089号
             </div>
             <div class="zh-footer-copy">
-                Copyright©www.hanhai.com All Rights Reserved 版权所有 上海瀚海网络科技有限公司
+                Copyright©www.hanhai.com All Rights Reserved 版权所有 同济大学
             </div>
             <div class="zh-footer-copy">
-                瀚海文学网,提供玄幻小说,都市小说,言情小说等免费小说阅读。作者发布小说作品时,请遵守国家互联网信息管理办法规定。<br />
+                TJ小说网,提供玄幻小说,都市小说,言情小说等免费小说阅读。作者发布小说作品时,请遵守国家互联网信息管理办法规定。<br />
                 本站所收录小说作品、社区话题、书库评论均属其个人行为,不代表本站立场。
             </div>
             <div class="zh-footer-badges">
@@ -967,6 +964,11 @@ function getFullAvatarUrl(avatarUrl) {
         return defaultAvatar
     }
     
+    // MinIO 内网地址(localhost:9000) → 走前端代理(8086)，远程浏览器无法访问服务器 localhost
+    if (avatarUrl.indexOf('localhost:9000') !== -1) {
+        return '/minio/' + avatarUrl.substring(avatarUrl.indexOf('localhost:9000/') + 'localhost:9000/'.length)
+    }
+    
     // 如果已经是完整URL，直接返回
     if (avatarUrl.startsWith('http://') || avatarUrl.startsWith('https://')) {
         return avatarUrl
@@ -991,6 +993,10 @@ function getFullCoverUrl(coverUrl) {
 
     if (!coverUrl || typeof coverUrl !== 'string' || coverUrl.trim() === '' || coverUrl === 'null' || coverUrl === 'undefined') {
         return ossBase + defaultCover
+    }
+    // MinIO 内网地址(localhost:9000) → 走前端代理(8086)
+    if (coverUrl.indexOf('localhost:9000') !== -1) {
+        return '/minio/' + coverUrl.substring(coverUrl.indexOf('localhost:9000/') + 'localhost:9000/'.length)
     }
     if (coverUrl.startsWith('http://') || coverUrl.startsWith('https://')) {
         return coverUrl

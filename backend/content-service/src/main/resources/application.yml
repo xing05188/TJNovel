@@ -11,7 +11,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:
@@ -30,6 +30,13 @@ spring:
           max-idle: 8
           min-idle: 4
 
+  # RabbitMQ 配置（消息队列，用于章节通知、交易通知等）
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:tjnovel}
+    password: ${RABBITMQ_PASSWORD:tjnovel123}
+
   # Elasticsearch 全文检索配置
   elasticsearch:
     uris: ${ELASTICSEARCH_HOST:http://localhost}:${ELASTICSEARCH_PORT:9200}
@@ -47,8 +54,6 @@ springdoc:
   swagger-ui:
     path: /swagger-ui.html
     enabled: true
-
-springdoc:
 
 # MinIO 对象存储配置（用于小说封面、章节附件等）
 minio:

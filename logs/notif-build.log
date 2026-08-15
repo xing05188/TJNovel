@@ -1,0 +1,54 @@
+[ERROR] COMPILATION ERROR : 
+[ERROR] /home/zhx/TJNovel/backend/notification-service/src/main/java/edu/tongji/notificationservice/config/RabbitMQConfig.java:[19,43] cannot find symbol
+  symbol:   variable MqConstants
+  location: class edu.tongji.notificationservice.config.RabbitMQConfig
+[ERROR] /home/zhx/TJNovel/backend/notification-service/src/main/java/edu/tongji/notificationservice/config/RabbitMQConfig.java:[32,37] cannot find symbol
+  symbol:   variable MqConstants
+  location: class edu.tongji.notificationservice.config.RabbitMQConfig
+[ERROR] /home/zhx/TJNovel/backend/notification-service/src/main/java/edu/tongji/notificationservice/config/RabbitMQConfig.java:[37,37] cannot find symbol
+  symbol:   variable MqConstants
+  location: class edu.tongji.notificationservice.config.RabbitMQConfig
+[ERROR] /home/zhx/TJNovel/backend/notification-service/src/main/java/edu/tongji/notificationservice/config/RabbitMQConfig.java:[42,37] cannot find symbol
+  symbol:   variable MqConstants
+  location: class edu.tongji.notificationservice.config.RabbitMQConfig
+[ERROR] /home/zhx/TJNovel/backend/notification-service/src/main/java/edu/tongji/notificationservice/config/RabbitMQConfig.java:[51,23] cannot find symbol
+  symbol:   variable MqConstants
+  location: class edu.tongji.notificationservice.config.RabbitMQConfig
+[ERROR] /home/zhx/TJNovel/backend/notification-service/src/main/java/edu/tongji/notificationservice/config/RabbitMQConfig.java:[58,23] cannot find symbol
+  symbol:   variable MqConstants
+  location: class edu.tongji.notificationservice.config.RabbitMQConfig
+[ERROR] /home/zhx/TJNovel/backend/notification-service/src/main/java/edu/tongji/notificationservice/config/RabbitMQConfig.java:[65,23] cannot find symbol
+  symbol:   variable MqConstants
+  location: class edu.tongji.notificationservice.config.RabbitMQConfig
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project notification-service: Compilation failure: Compilation failure: 
+[ERROR] /home/zhx/TJNovel/backend/notification-service/src/main/java/edu/tongji/notificationservice/config/RabbitMQConfig.java:[19,43] cannot find symbol
+[ERROR]   symbol:   variable MqConstants
+[ERROR]   location: class edu.tongji.notificationservice.config.RabbitMQConfig
+[ERROR] /home/zhx/TJNovel/backend/notification-service/src/main/java/edu/tongji/notificationservice/config/RabbitMQConfig.java:[32,37] cannot find symbol
+[ERROR]   symbol:   variable MqConstants
+[ERROR]   location: class edu.tongji.notificationservice.config.RabbitMQConfig
+[ERROR] /home/zhx/TJNovel/backend/notification-service/src/main/java/edu/tongji/notificationservice/config/RabbitMQConfig.java:[37,37] cannot find symbol
+[ERROR]   symbol:   variable MqConstants
+[ERROR]   location: class edu.tongji.notificationservice.config.RabbitMQConfig
+[ERROR] /home/zhx/TJNovel/backend/notification-service/src/main/java/edu/tongji/notificationservice/config/RabbitMQConfig.java:[42,37] cannot find symbol
+[ERROR]   symbol:   variable MqConstants
+[ERROR]   location: class edu.tongji.notificationservice.config.RabbitMQConfig
+[ERROR] /home/zhx/TJNovel/backend/notification-service/src/main/java/edu/tongji/notificationservice/config/RabbitMQConfig.java:[51,23] cannot find symbol
+[ERROR]   symbol:   variable MqConstants
+[ERROR]   location: class edu.tongji.notificationservice.config.RabbitMQConfig
+[ERROR] /home/zhx/TJNovel/backend/notification-service/src/main/java/edu/tongji/notificationservice/config/RabbitMQConfig.java:[58,23] cannot find symbol
+[ERROR]   symbol:   variable MqConstants
+[ERROR]   location: class edu.tongji.notificationservice.config.RabbitMQConfig
+[ERROR] /home/zhx/TJNovel/backend/notification-service/src/main/java/edu/tongji/notificationservice/config/RabbitMQConfig.java:[65,23] cannot find symbol
+[ERROR]   symbol:   variable MqConstants
+[ERROR]   location: class edu.tongji.notificationservice.config.RabbitMQConfig
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <args> -rf :notification-service

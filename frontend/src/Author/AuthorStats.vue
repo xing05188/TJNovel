@@ -124,7 +124,7 @@
 </template>
 
 <script>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { novelsStore } from '@/stores/Novels'
 import * as echarts from 'echarts'
 
@@ -134,6 +134,8 @@ export default {
     const scoreChart = ref(null)
     const wordCountChart = ref(null)
     const loading = ref(false)
+    // 保存图表实例，便于卸载时统一释放
+    const chartInstances = []
 
     // 获取小说数据
     const fetchNovels = async () => {
@@ -212,7 +214,9 @@ export default {
     }
 
     const initStatusChart = () => {
+      if (!statusChart.value) return
       const chart = echarts.init(statusChart.value)
+      chartInstances.push(chart)
       const option = {
         tooltip: {
           trigger: 'item',
@@ -316,7 +320,9 @@ export default {
     }
 
     const initWordCountChart = () => {
+      if (!wordCountChart.value) return
       const chart = echarts.init(wordCountChart.value)
+      chartInstances.push(chart)
       
       // 计算字数分布
       const wordCountRanges = [
@@ -367,7 +373,17 @@ export default {
     
     onMounted(async () => {
       await fetchNovels()
+      // 等待 DOM 渲染完成，确保图表容器存在
+      await nextTick()
       initCharts()
+    })
+
+    onBeforeUnmount(() => {
+      // 卸载时释放所有图表实例，避免重复初始化与内存泄漏
+      chartInstances.forEach(chart => {
+        if (chart) chart.dispose()
+      })
+      chartInstances.length = 0
     })
 
     return {

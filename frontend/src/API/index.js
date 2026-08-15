@@ -1,9 +1,9 @@
 import axios from 'axios'
 
 // 创建 axios 实例
-// 直接使用 API Gateway 地址（方案二）
+// 默认走相对路径，由 devServer 代理转发到本地 API Gateway（localhost:7080）
 const service = axios.create({
-    baseURL: process.env.VUE_APP_BASE_API || 'http://4.233.147.12:7080', // 从环境变量获取，默认使用 API Gateway
+    baseURL: process.env.VUE_APP_BASE_API || '', // 空则同源请求，经 vue.config.js 代理
     timeout: 10000 // 请求超时时间（10秒）
 })
 

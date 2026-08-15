@@ -872,6 +872,37 @@ const purchase_Chapter = async () => {
     }
 };
 
+// 从章节搜索结果跳转时，加载指定章节内容
+const loadChapterFromSearch = async (chapterId) => {
+    try {
+        const chapter = chapters.value.find(ch => ch.chapterId === chapterId);
+        // 收费章节未购买时提示购买
+        if (chapter && chapter.status === '已发布' && chapter.isCharged === '是' && !chapter.hasPurchased) {
+            selectedChapter.value = chapter;
+            showPurchaseDialog.value = true;
+            return;
+        }
+        const response = await getChapter(selectNovelState.novelId, chapterId);
+        selectNovelState.resetChapter(
+            response.chapterId,
+            response.title,
+            response.content,
+            response.wordCount,
+            response.pricePerKilo,
+            response.calculatedPrice,
+            response.isCharged,
+            response.publishTime,
+            response.status
+        );
+    } catch (error) {
+        console.error('加载搜索命中的章节失败:', error);
+        toast("加载章节失败!", {
+            "type": "error",
+            "dangerouslyHTMLString": true
+        });
+    }
+};
+
 // goToChapter 函数，使用章节级别的购买状态
 const goToChapter = async (chapter) => {
     try {
@@ -1486,6 +1517,10 @@ onMounted(() => {
     window.addEventListener('keydown', handleKeyDown);
     fetchChapters();
     scrollToTop();
+    // 从章节搜索结果跳转进来时，自动加载命中的章节内容
+    if (selectNovelState.chapterId && !selectNovelState.cha_content) {
+        loadChapterFromSearch(selectNovelState.chapterId);
+    }
 });
 onMounted(async () => {
     try {

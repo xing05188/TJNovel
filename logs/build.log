@@ -1,0 +1,120 @@
+[ERROR] COMPILATION ERROR : 
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/service/ChapterService.java:[253,43] cannot find symbol
+  symbol:   method getTitle()
+  location: variable novel of type edu.tongji.contentservice.entity.Novel
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/service/SearchService.java:[86,78] incompatible types: java.lang.Long cannot be converted to co.elastic.clients.json.JsonData
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/service/SearchService.java:[89,78] incompatible types: java.lang.Long cannot be converted to co.elastic.clients.json.JsonData
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/service/SearchService.java:[103,21] incompatible types: no instance(s) of type variable(s) R exist so that org.springframework.data.util.Streamable<R> conforms to org.springframework.data.domain.Page<edu.tongji.contentservice.document.NovelDocument>
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/service/SearchService.java:[114,17] cannot find symbol
+  symbol:   method withHighlight((h)->h.fie[...]m>")))
+  location: class org.springframework.data.elasticsearch.client.elc.NativeQueryBuilder
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/service/SearchService.java:[121,94] cannot find symbol
+  symbol:   method getValues()
+  location: interface java.util.List<java.lang.String>
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/web/SearchController.java:[36,27] no suitable method found for ok(org.springframework.data.domain.Page<edu.tongji.contentservice.document.NovelDocument>)
+    method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,T) is not applicable
+      (cannot infer type-variable(s) T
+        (actual and formal argument lists differ in length))
+    method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,java.lang.String,T) is not applicable
+      (cannot infer type-variable(s) T
+        (actual and formal argument lists differ in length))
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/web/SearchController.java:[48,27] no suitable method found for ok(org.springframework.data.domain.Page<edu.tongji.contentservice.document.NovelDocument>)
+    method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,T) is not applicable
+      (cannot infer type-variable(s) T
+        (actual and formal argument lists differ in length))
+    method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,java.lang.String,T) is not applicable
+      (cannot infer type-variable(s) T
+        (actual and formal argument lists differ in length))
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/web/SearchController.java:[65,27] no suitable method found for ok(org.springframework.data.domain.Page<edu.tongji.contentservice.document.NovelDocument>)
+    method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,T) is not applicable
+      (cannot infer type-variable(s) T
+        (actual and formal argument lists differ in length))
+    method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,java.lang.String,T) is not applicable
+      (cannot infer type-variable(s) T
+        (actual and formal argument lists differ in length))
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/web/SearchController.java:[77,27] no suitable method found for ok(org.springframework.data.domain.Page<edu.tongji.contentservice.document.ChapterDocument>)
+    method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,T) is not applicable
+      (cannot infer type-variable(s) T
+        (actual and formal argument lists differ in length))
+    method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,java.lang.String,T) is not applicable
+      (cannot infer type-variable(s) T
+        (actual and formal argument lists differ in length))
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/web/SearchController.java:[89,27] no suitable method found for ok(org.springframework.data.domain.Page<edu.tongji.contentservice.document.ChapterDocument>)
+    method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,T) is not applicable
+      (cannot infer type-variable(s) T
+        (actual and formal argument lists differ in length))
+    method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,java.lang.String,T) is not applicable
+      (cannot infer type-variable(s) T
+        (actual and formal argument lists differ in length))
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/web/SearchController.java:[98,27] no suitable method found for ok(java.util.List<edu.tongji.contentservice.document.ChapterDocument>)
+    method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,T) is not applicable
+      (cannot infer type-variable(s) T
+        (actual and formal argument lists differ in length))
+    method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,java.lang.String,T) is not applicable
+      (cannot infer type-variable(s) T
+        (actual and formal argument lists differ in length))
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project content-service: Compilation failure: Compilation failure: 
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/service/ChapterService.java:[253,43] cannot find symbol
+[ERROR]   symbol:   method getTitle()
+[ERROR]   location: variable novel of type edu.tongji.contentservice.entity.Novel
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/service/SearchService.java:[86,78] incompatible types: java.lang.Long cannot be converted to co.elastic.clients.json.JsonData
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/service/SearchService.java:[89,78] incompatible types: java.lang.Long cannot be converted to co.elastic.clients.json.JsonData
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/service/SearchService.java:[103,21] incompatible types: no instance(s) of type variable(s) R exist so that org.springframework.data.util.Streamable<R> conforms to org.springframework.data.domain.Page<edu.tongji.contentservice.document.NovelDocument>
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/service/SearchService.java:[114,17] cannot find symbol
+[ERROR]   symbol:   method withHighlight((h)->h.fie[...]m>")))
+[ERROR]   location: class org.springframework.data.elasticsearch.client.elc.NativeQueryBuilder
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/service/SearchService.java:[121,94] cannot find symbol
+[ERROR]   symbol:   method getValues()
+[ERROR]   location: interface java.util.List<java.lang.String>
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/web/SearchController.java:[36,27] no suitable method found for ok(org.springframework.data.domain.Page<edu.tongji.contentservice.document.NovelDocument>)
+[ERROR]     method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,T) is not applicable
+[ERROR]       (cannot infer type-variable(s) T
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,java.lang.String,T) is not applicable
+[ERROR]       (cannot infer type-variable(s) T
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/web/SearchController.java:[48,27] no suitable method found for ok(org.springframework.data.domain.Page<edu.tongji.contentservice.document.NovelDocument>)
+[ERROR]     method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,T) is not applicable
+[ERROR]       (cannot infer type-variable(s) T
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,java.lang.String,T) is not applicable
+[ERROR]       (cannot infer type-variable(s) T
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/web/SearchController.java:[65,27] no suitable method found for ok(org.springframework.data.domain.Page<edu.tongji.contentservice.document.NovelDocument>)
+[ERROR]     method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,T) is not applicable
+[ERROR]       (cannot infer type-variable(s) T
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,java.lang.String,T) is not applicable
+[ERROR]       (cannot infer type-variable(s) T
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/web/SearchController.java:[77,27] no suitable method found for ok(org.springframework.data.domain.Page<edu.tongji.contentservice.document.ChapterDocument>)
+[ERROR]     method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,T) is not applicable
+[ERROR]       (cannot infer type-variable(s) T
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,java.lang.String,T) is not applicable
+[ERROR]       (cannot infer type-variable(s) T
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/web/SearchController.java:[89,27] no suitable method found for ok(org.springframework.data.domain.Page<edu.tongji.contentservice.document.ChapterDocument>)
+[ERROR]     method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,T) is not applicable
+[ERROR]       (cannot infer type-variable(s) T
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,java.lang.String,T) is not applicable
+[ERROR]       (cannot infer type-variable(s) T
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR] /home/zhx/TJNovel/backend/content-service/src/main/java/edu/tongji/contentservice/web/SearchController.java:[98,27] no suitable method found for ok(java.util.List<edu.tongji.contentservice.document.ChapterDocument>)
+[ERROR]     method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,T) is not applicable
+[ERROR]       (cannot infer type-variable(s) T
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method edu.tongji.common.dto.ApiResponse.<T>ok(java.lang.String,java.lang.String,T) is not applicable
+[ERROR]       (cannot infer type-variable(s) T
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <args> -rf :content-service

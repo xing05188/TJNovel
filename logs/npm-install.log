@@ -1,0 +1,9 @@
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'vue3-toastify@0.2.8',
+npm WARN EBADENGINE   required: { node: '>=20', npm: '>=9.0.0' },
+npm WARN EBADENGINE   current: { node: 'v18.19.1', npm: '9.2.0' }
+npm WARN EBADENGINE }
+npm ERR! [safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":50,"threshold":50,"scope":"turn","targets":["/home/zhx/.npm/_cacache/tmp/270584e9"],"targetCount":1}
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/zhx/.npm/_logs/2026-08-14T11_46_00_129Z-debug-0.log

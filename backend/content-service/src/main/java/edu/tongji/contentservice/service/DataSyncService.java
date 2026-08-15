@@ -11,12 +11,16 @@ import edu.tongji.contentservice.repository.ChapterRepository;
 import edu.tongji.contentservice.repository.NovelCategoryRepository;
 import edu.tongji.contentservice.repository.NovelRepository;
 import edu.tongji.contentservice.repository.NovelSearchRepository;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,18 +41,46 @@ public class DataSyncService {
     private final NovelCategoryRepository novelCategoryRepository;
     private final NovelSearchRepository novelSearchRepository;
     private final ChapterSearchRepository chapterSearchRepository;
+    private final WebClient webClient;
+
+    @Value("${services.user:http://localhost:7081}")
+    private String userService;
 
     @Autowired
     public DataSyncService(NovelRepository novelRepository,
                            ChapterRepository chapterRepository,
                            NovelCategoryRepository novelCategoryRepository,
                            NovelSearchRepository novelSearchRepository,
-                           ChapterSearchRepository chapterSearchRepository) {
+                           ChapterSearchRepository chapterSearchRepository,
+                           WebClient webClient) {
         this.novelRepository = novelRepository;
         this.chapterRepository = chapterRepository;
         this.novelCategoryRepository = novelCategoryRepository;
         this.novelSearchRepository = novelSearchRepository;
         this.chapterSearchRepository = chapterSearchRepository;
+        this.webClient = webClient;
+    }
+
+    /**
+     * 通过 user-service 获取作者名（失败返回 null，不阻塞同步）
+     */
+    private String getAuthorName(Long authorId) {
+        if (authorId == null) {
+            return null;
+        }
+        try {
+            JsonNode json = webClient.get()
+                    .uri(userService + "/authors/" + authorId)
+                    .retrieve()
+                    .bodyToMono(JsonNode.class)
+                    .block();
+            if (json != null && json.hasNonNull("data")) {
+                return json.get("data").path("authorName").asText(null);
+            }
+        } catch (Exception e) {
+            logger.warn("获取作者名失败: authorId={}, 原因: {}", authorId, e.getMessage());
+        }
+        return null;
     }
 
     /**
@@ -59,10 +91,34 @@ public class DataSyncService {
         logger.info("开始全量同步 MySQL 数据到 Elasticsearch...");
         try {
             syncAllNovels();
+            syncAllChapters();
             logger.info("全量同步完成");
         } catch (Exception e) {
             logger.warn("全量同步失败（ES 可能未就绪）: {}", e.getMessage());
         }
+    }
+
+    /**
+     * 全量同步所有已发布章节
+     */
+    public void syncAllChapters() {
+        List<Chapter> chapters = chapterRepository.findAll().stream()
+                .filter(c -> "已发布".equals(c.getStatus()))
+                .collect(Collectors.toList());
+        List<ChapterDocument> documents = chapters.stream().map(ch -> {
+            ChapterDocument doc = new ChapterDocument();
+            doc.setId(ch.getNovelId() + "_" + ch.getChapterId());
+            doc.setNovelId(ch.getNovelId());
+            doc.setChapterId(ch.getChapterId());
+            doc.setTitle(ch.getTitle());
+            doc.setContent(ch.getContent());
+            doc.setWordCount(ch.getWordCount());
+            doc.setStatus(ch.getStatus());
+            doc.setPublishTime(ch.getPublishTime());
+            return doc;
+        }).collect(Collectors.toList());
+        chapterSearchRepository.saveAll(documents);
+        logger.info("同步 {} 章到 ES", documents.size());
     }
 
     /**
@@ -129,6 +185,7 @@ public class DataSyncService {
         NovelDocument doc = new NovelDocument();
         doc.setNovelId(novel.getNovelId());
         doc.setAuthorId(novel.getAuthorId());
+        doc.setAuthorName(getAuthorName(novel.getAuthorId()));
         doc.setNovelName(novel.getNovelName());
         doc.setIntroduction(novel.getIntroduction());
         doc.setCoverUrl(novel.getCoverUrl());

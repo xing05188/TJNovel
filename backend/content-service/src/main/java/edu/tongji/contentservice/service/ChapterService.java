@@ -17,6 +17,9 @@ public class ChapterService {
     private final NovelService novelService;
     private final NotificationProducer notificationProducer;
 
+    @Autowired(required = false)
+    private DataSyncService dataSyncService;
+
     @Autowired
     public ChapterService(ChapterRepository chapterRepository, 
                           AdminServiceClient adminServiceClient,
@@ -26,6 +29,24 @@ public class ChapterService {
         this.adminServiceClient = adminServiceClient;
         this.novelService = novelService;
         this.notificationProducer = notificationProducer;
+    }
+
+    /**
+     * 章节状态变更后同步 ES 索引：仅"已发布"入库，其余状态移除索引
+     */
+    private void syncChapterIndex(Chapter chapter) {
+        if (dataSyncService == null) {
+            return; // ES 未启用时跳过
+        }
+        try {
+            if (chapter != null && "已发布".equals(chapter.getStatus())) {
+                dataSyncService.syncChapter(chapter.getNovelId(), chapter.getChapterId());
+            } else if (chapter != null) {
+                dataSyncService.deleteChapter(chapter.getNovelId(), chapter.getChapterId());
+            }
+        } catch (Exception e) {
+            System.err.println("同步章节到 ES 失败: " + e.getMessage());
+        }
     }
 
     /**
@@ -120,6 +141,9 @@ public class ChapterService {
             notifyNovelUpdate(saved.getNovelId(), saved.getTitle());
         }
         
+        // 增量同步章节到 ES（已发布入库，非发布状态移除索引）
+        syncChapterIndex(saved);
+        
         return saved;
     }
 
@@ -165,6 +189,9 @@ public class ChapterService {
                 notifyNovelUpdate(saved.getNovelId(), saved.getTitle());
             }
             
+            // 增量同步章节到 ES（已发布入库，非发布状态移除索引）
+            syncChapterIndex(saved);
+            
             return Optional.of(saved);
         }
         return Optional.empty();
@@ -185,6 +212,15 @@ public class ChapterService {
             // 如果删除的是已发布章节，更新小说总字数
             if ("已发布".equals(chapter.getStatus())) {
                 novelService.updateNovelTotalWordCount(novelId);
+            }
+            
+            // 删除章节后同步移除 ES 索引
+            if (dataSyncService != null) {
+                try {
+                    dataSyncService.deleteChapter(novelId, chapterId);
+                } catch (Exception e) {
+                    System.err.println("删除章节 ES 索引失败: " + e.getMessage());
+                }
             }
             return true;
         }
@@ -220,6 +256,9 @@ public class ChapterService {
             if ("已发布".equals(newStatus)) {
                 novelService.updateNovelTotalWordCount(novelId);
             }
+            
+            // 审核状态变更后同步 ES 索引（已发布入库，封禁/下架移除索引）
+            syncChapterIndex(saved);
 
             // 如果提供了管理员信息，则记录章节管理操作到 admin-service
             if (managerId != null) {
@@ -250,7 +289,7 @@ public class ChapterService {
         try {
             novelService.getNovelById(novelId).ifPresent(novel ->
                     notificationProducer.publishNovelUpdate(
-                            novelId, novel.getTitle(), chapterTitle, novel.getAuthorId()));
+                            novelId, novel.getNovelName(), chapterTitle, novel.getAuthorId()));
         } catch (Exception e) {
             // 通知为异步增强能力，异常不应影响章节发布主流程
             System.err.println("发布小说更新通知时发生异常: " + e.getMessage());

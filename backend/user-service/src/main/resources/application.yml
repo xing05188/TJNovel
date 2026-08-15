@@ -15,7 +15,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:
@@ -52,8 +52,6 @@ springdoc:
   swagger-ui:
     path: /swagger-ui.html
     enabled: true
-
-springdoc:
 
 # MinIO 对象存储配置（用于用户头像、背景图等）
 minio:
