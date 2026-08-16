@@ -2593,3 +2593,227 @@ Hibernate:
         author a1_0 
     where
         a1_0.author_id=?
+Hibernate: 
+    select
+        a1_0.author_id,
+        a1_0.author_name,
+        a1_0.avatar_url,
+        a1_0.earning,
+        a1_0.introduction,
+        a1_0.password,
+        a1_0.phone,
+        a1_0.register_time 
+    from
+        author a1_0 
+    where
+        a1_0.author_id=?
+Hibernate: 
+    select
+        a1_0.author_id,
+        a1_0.author_name,
+        a1_0.avatar_url,
+        a1_0.earning,
+        a1_0.introduction,
+        a1_0.password,
+        a1_0.phone,
+        a1_0.register_time 
+    from
+        author a1_0 
+    where
+        a1_0.author_id=?
+Hibernate: 
+    select
+        a1_0.author_id,
+        a1_0.author_name,
+        a1_0.avatar_url,
+        a1_0.earning,
+        a1_0.introduction,
+        a1_0.password,
+        a1_0.phone,
+        a1_0.register_time 
+    from
+        author a1_0 
+    where
+        a1_0.author_id=?
+Hibernate: 
+    select
+        a1_0.author_id,
+        a1_0.author_name,
+        a1_0.avatar_url,
+        a1_0.earning,
+        a1_0.introduction,
+        a1_0.password,
+        a1_0.phone,
+        a1_0.register_time 
+    from
+        author a1_0 
+    where
+        a1_0.author_id=?
+Hibernate: 
+    select
+        a1_0.author_id,
+        a1_0.author_name,
+        a1_0.avatar_url,
+        a1_0.earning,
+        a1_0.introduction,
+        a1_0.password,
+        a1_0.phone,
+        a1_0.register_time 
+    from
+        author a1_0 
+    where
+        a1_0.author_id=?
+Hibernate: 
+    select
+        a1_0.author_id,
+        a1_0.author_name,
+        a1_0.avatar_url,
+        a1_0.earning,
+        a1_0.introduction,
+        a1_0.password,
+        a1_0.phone,
+        a1_0.register_time 
+    from
+        author a1_0 
+    where
+        a1_0.author_id=?
+Hibernate: 
+    select
+        a1_0.author_id,
+        a1_0.author_name,
+        a1_0.avatar_url,
+        a1_0.earning,
+        a1_0.introduction,
+        a1_0.password,
+        a1_0.phone,
+        a1_0.register_time 
+    from
+        author a1_0 
+    where
+        a1_0.author_id=?
+Hibernate: 
+    select
+        a1_0.author_id,
+        a1_0.author_name,
+        a1_0.avatar_url,
+        a1_0.earning,
+        a1_0.introduction,
+        a1_0.password,
+        a1_0.phone,
+        a1_0.register_time 
+    from
+        author a1_0 
+    where
+        a1_0.author_id=?
+Hibernate: 
+    select
+        a1_0.author_id,
+        a1_0.author_name,
+        a1_0.avatar_url,
+        a1_0.earning,
+        a1_0.introduction,
+        a1_0.password,
+        a1_0.phone,
+        a1_0.register_time 
+    from
+        author a1_0 
+    where
+        a1_0.author_id=?
+Hibernate: 
+    select
+        a1_0.author_id,
+        a1_0.author_name,
+        a1_0.avatar_url,
+        a1_0.earning,
+        a1_0.introduction,
+        a1_0.password,
+        a1_0.phone,
+        a1_0.register_time 
+    from
+        author a1_0 
+    where
+        a1_0.author_id=?
+Hibernate: 
+    select
+        a1_0.author_id,
+        a1_0.author_name,
+        a1_0.avatar_url,
+        a1_0.earning,
+        a1_0.introduction,
+        a1_0.password,
+        a1_0.phone,
+        a1_0.register_time 
+    from
+        author a1_0 
+    where
+        a1_0.author_id=?
+Hibernate: 
+    select
+        a1_0.author_id,
+        a1_0.author_name,
+        a1_0.avatar_url,
+        a1_0.earning,
+        a1_0.introduction,
+        a1_0.password,
+        a1_0.phone,
+        a1_0.register_time 
+    from
+        author a1_0 
+    where
+        a1_0.author_id=?
+Hibernate: 
+    select
+        a1_0.author_id,
+        a1_0.author_name,
+        a1_0.avatar_url,
+        a1_0.earning,
+        a1_0.introduction,
+        a1_0.password,
+        a1_0.phone,
+        a1_0.register_time 
+    from
+        author a1_0 
+    where
+        a1_0.author_id=?
+Hibernate: 
+    select
+        a1_0.author_id,
+        a1_0.author_name,
+        a1_0.avatar_url,
+        a1_0.earning,
+        a1_0.introduction,
+        a1_0.password,
+        a1_0.phone,
+        a1_0.register_time 
+    from
+        author a1_0 
+    where
+        a1_0.author_id=?
+Hibernate: 
+    select
+        a1_0.author_id,
+        a1_0.author_name,
+        a1_0.avatar_url,
+        a1_0.earning,
+        a1_0.introduction,
+        a1_0.password,
+        a1_0.phone,
+        a1_0.register_time 
+    from
+        author a1_0 
+    where
+        a1_0.author_id=?
+Hibernate: 
+    select
+        a1_0.author_id,
+        a1_0.author_name,
+        a1_0.avatar_url,
+        a1_0.earning,
+        a1_0.introduction,
+        a1_0.password,
+        a1_0.phone,
+        a1_0.register_time 
+    from
+        author a1_0 
+    where
+        a1_0.author_id=?
