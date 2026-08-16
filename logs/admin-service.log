@@ -72,3 +72,4 @@ Hibernate: select cm1_0.management_id,cm1_0.chapter_id,cm1_0.novel_id from chapt
 Hibernate: select cm1_0.management_id,cm1_0.chapter_id,cm1_0.novel_id from chapter_management cm1_0,management m1_0 where cm1_0.management_id=m1_0.management_id order by m1_0.time desc
 Hibernate: select cm1_0.management_id,cm1_0.chapter_id,cm1_0.novel_id from chapter_management cm1_0,management m1_0 where cm1_0.management_id=m1_0.management_id order by m1_0.time desc
 Hibernate: select cm1_0.management_id,cm1_0.chapter_id,cm1_0.novel_id from chapter_management cm1_0,management m1_0 where cm1_0.management_id=m1_0.management_id order by m1_0.time desc
+Hibernate: select cm1_0.management_id,cm1_0.chapter_id,cm1_0.novel_id from chapter_management cm1_0,management m1_0 where cm1_0.management_id=m1_0.management_id order by m1_0.time desc

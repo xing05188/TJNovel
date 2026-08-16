@@ -1482,3 +1482,1481 @@ Hibernate:
         novel n1_0 
     where
         n1_0.novel_id=?
+Hibernate: 
+    select
+        c1_0.category_name 
+    from
+        category c1_0
+Hibernate: 
+    select
+        distinct n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    left join
+        novel_category nc1_0 
+            on n1_0.novel_id=nc1_0.novel_id 
+    where
+        (
+            n1_0.status='连载' 
+            or n1_0.status='完结'
+        ) 
+        and (
+            ? is null 
+            or nc1_0.category_name=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count>=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count<=?
+        ) 
+        and (
+            ? is null 
+            or (
+                ?=1 
+                and n1_0.status='完结'
+            ) 
+            or (
+                ?=0 
+                and n1_0.status='连载'
+            )
+        ) 
+    order by
+        n1_0.novel_id 
+    limit
+        ?
+Hibernate: 
+    select
+        count(distinct n1_0.novel_id) 
+    from
+        novel n1_0 
+    left join
+        novel_category nc1_0 
+            on n1_0.novel_id=nc1_0.novel_id 
+    where
+        (
+            n1_0.status='连载' 
+            or n1_0.status='完结'
+        ) 
+        and (
+            ? is null 
+            or nc1_0.category_name=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count>=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count<=?
+        ) 
+        and (
+            ? is null 
+            or (
+                ?=1 
+                and n1_0.status='完结'
+            ) 
+            or (
+                ?=0 
+                and n1_0.status='连载'
+            )
+        )
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.status=? 
+    order by
+        n1_0.collected_count desc 
+    limit
+        ?
+Hibernate: 
+    select
+        count(*) 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    select
+        c1_0.category_name 
+    from
+        category c1_0 
+    where
+        c1_0.category_name in (select
+            nc1_0.category_name 
+        from
+            novel_category nc1_0 
+        where
+            nc1_0.novel_id=?)
+Hibernate: 
+    select
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    select
+        count(n1_0.novel_id) 
+    from
+        novel n1_0 
+    where
+        n1_0.author_id=?
+Hibernate: 
+    select
+        n1_0.collected_count 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    select
+        coalesce(sum(n1_0.total_word_count), 0) 
+    from
+        novel n1_0 
+    where
+        n1_0.author_id=?
+Hibernate: 
+    select
+        n1_0.recommend_count 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.status='已发布' 
+    order by
+        c1_0.chapter_id desc
+Hibernate: 
+    select
+        r1_0.novel_id,
+        r1_0.reader_id,
+        r1_0.score,
+        r1_0.rating_time 
+    from
+        rate r1_0 
+    where
+        r1_0.reader_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+    order by
+        c1_0.chapter_id
+Hibernate: 
+    select
+        wp1_0.novel_id,
+        wp1_0.reader_id 
+    from
+        wholepurchase wp1_0 
+    where
+        wp1_0.reader_id=? 
+        and wp1_0.novel_id=? 
+        and wp1_0.is_bought=? 
+    limit
+        ?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+    order by
+        c1_0.chapter_id
+Hibernate: 
+    select
+        wp1_0.novel_id,
+        wp1_0.reader_id 
+    from
+        wholepurchase wp1_0 
+    where
+        wp1_0.reader_id=? 
+        and wp1_0.novel_id=? 
+        and wp1_0.is_bought=? 
+    limit
+        ?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        coalesce(sum(n1_0.total_word_count), 0) 
+    from
+        novel n1_0 
+    where
+        n1_0.author_id=?
+Hibernate: 
+    select
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    select
+        n1_0.recommend_count 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    select
+        count(n1_0.novel_id) 
+    from
+        novel n1_0 
+    where
+        n1_0.author_id=?
+Hibernate: 
+    select
+        n1_0.collected_count 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    select
+        count(*) 
+    from
+        novel n1_0 
+    where
+        n1_0.novel_id=?
+Hibernate: 
+    select
+        c1_0.category_name 
+    from
+        category c1_0 
+    where
+        c1_0.category_name in (select
+            nc1_0.category_name 
+        from
+            novel_category nc1_0 
+        where
+            nc1_0.novel_id=?)
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.status='已发布' 
+    order by
+        c1_0.chapter_id desc
+Hibernate: 
+    select
+        r1_0.novel_id,
+        r1_0.reader_id,
+        r1_0.score,
+        r1_0.rating_time 
+    from
+        rate r1_0 
+    where
+        r1_0.reader_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+    order by
+        c1_0.chapter_id
+Hibernate: 
+    select
+        wp1_0.novel_id,
+        wp1_0.reader_id 
+    from
+        wholepurchase wp1_0 
+    where
+        wp1_0.reader_id=? 
+        and wp1_0.novel_id=? 
+        and wp1_0.is_bought=? 
+    limit
+        ?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        c1_0.chapter_id,
+        c1_0.novel_id,
+        c1_0.content,
+        c1_0.is_charged,
+        c1_0.price_per_kilo,
+        c1_0.publish_time,
+        c1_0.status,
+        c1_0.title,
+        c1_0.word_count 
+    from
+        chapter c1_0 
+    where
+        c1_0.novel_id=? 
+        and c1_0.chapter_id=?
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.status=? 
+    order by
+        n1_0.collected_count desc 
+    limit
+        ?
+Hibernate: 
+    select
+        c1_0.category_name 
+    from
+        category c1_0
+Hibernate: 
+    select
+        distinct n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    left join
+        novel_category nc1_0 
+            on n1_0.novel_id=nc1_0.novel_id 
+    where
+        (
+            n1_0.status='连载' 
+            or n1_0.status='完结'
+        ) 
+        and (
+            ? is null 
+            or nc1_0.category_name=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count>=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count<=?
+        ) 
+        and (
+            ? is null 
+            or (
+                ?=1 
+                and n1_0.status='完结'
+            ) 
+            or (
+                ?=0 
+                and n1_0.status='连载'
+            )
+        ) 
+    order by
+        n1_0.novel_id 
+    limit
+        ?
+Hibernate: 
+    select
+        count(distinct n1_0.novel_id) 
+    from
+        novel n1_0 
+    left join
+        novel_category nc1_0 
+            on n1_0.novel_id=nc1_0.novel_id 
+    where
+        (
+            n1_0.status='连载' 
+            or n1_0.status='完结'
+        ) 
+        and (
+            ? is null 
+            or nc1_0.category_name=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count>=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count<=?
+        ) 
+        and (
+            ? is null 
+            or (
+                ?=1 
+                and n1_0.status='完结'
+            ) 
+            or (
+                ?=0 
+                and n1_0.status='连载'
+            )
+        )
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.status=? 
+    order by
+        n1_0.collected_count desc 
+    limit
+        ?
+Hibernate: 
+    select
+        c1_0.category_name 
+    from
+        category c1_0
+Hibernate: 
+    select
+        distinct n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    left join
+        novel_category nc1_0 
+            on n1_0.novel_id=nc1_0.novel_id 
+    where
+        (
+            n1_0.status='连载' 
+            or n1_0.status='完结'
+        ) 
+        and (
+            ? is null 
+            or nc1_0.category_name=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count>=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count<=?
+        ) 
+        and (
+            ? is null 
+            or (
+                ?=1 
+                and n1_0.status='完结'
+            ) 
+            or (
+                ?=0 
+                and n1_0.status='连载'
+            )
+        ) 
+    order by
+        n1_0.novel_id 
+    limit
+        ?
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.status=? 
+    order by
+        n1_0.score desc 
+    limit
+        ?
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.status=? 
+    order by
+        n1_0.collected_count desc 
+    limit
+        ?
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.status=? 
+    order by
+        n1_0.recommend_count desc 
+    limit
+        ?
+Hibernate: 
+    select
+        c1_0.category_name 
+    from
+        category c1_0
+Hibernate: 
+    select
+        distinct n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    left join
+        novel_category nc1_0 
+            on n1_0.novel_id=nc1_0.novel_id 
+    where
+        (
+            n1_0.status='连载' 
+            or n1_0.status='完结'
+        ) 
+        and (
+            ? is null 
+            or nc1_0.category_name=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count>=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count<=?
+        ) 
+        and (
+            ? is null 
+            or (
+                ?=1 
+                and n1_0.status='完结'
+            ) 
+            or (
+                ?=0 
+                and n1_0.status='连载'
+            )
+        ) 
+    order by
+        n1_0.novel_id 
+    limit
+        ?
+Hibernate: 
+    select
+        count(distinct n1_0.novel_id) 
+    from
+        novel n1_0 
+    left join
+        novel_category nc1_0 
+            on n1_0.novel_id=nc1_0.novel_id 
+    where
+        (
+            n1_0.status='连载' 
+            or n1_0.status='完结'
+        ) 
+        and (
+            ? is null 
+            or nc1_0.category_name=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count>=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count<=?
+        ) 
+        and (
+            ? is null 
+            or (
+                ?=1 
+                and n1_0.status='完结'
+            ) 
+            or (
+                ?=0 
+                and n1_0.status='连载'
+            )
+        )
+Hibernate: 
+    select
+        n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    where
+        n1_0.status=? 
+    order by
+        n1_0.collected_count desc 
+    limit
+        ?
+Hibernate: 
+    select
+        c1_0.category_name 
+    from
+        category c1_0
+Hibernate: 
+    select
+        distinct n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    left join
+        novel_category nc1_0 
+            on n1_0.novel_id=nc1_0.novel_id 
+    where
+        (
+            n1_0.status='连载' 
+            or n1_0.status='完结'
+        ) 
+        and (
+            ? is null 
+            or nc1_0.category_name=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count>=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count<=?
+        ) 
+        and (
+            ? is null 
+            or (
+                ?=1 
+                and n1_0.status='完结'
+            ) 
+            or (
+                ?=0 
+                and n1_0.status='连载'
+            )
+        ) 
+    order by
+        n1_0.novel_id 
+    limit
+        ?
+Hibernate: 
+    select
+        count(distinct n1_0.novel_id) 
+    from
+        novel n1_0 
+    left join
+        novel_category nc1_0 
+            on n1_0.novel_id=nc1_0.novel_id 
+    where
+        (
+            n1_0.status='连载' 
+            or n1_0.status='完结'
+        ) 
+        and (
+            ? is null 
+            or nc1_0.category_name=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count>=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count<=?
+        ) 
+        and (
+            ? is null 
+            or (
+                ?=1 
+                and n1_0.status='完结'
+            ) 
+            or (
+                ?=0 
+                and n1_0.status='连载'
+            )
+        )
+Hibernate: 
+    select
+        c1_0.category_name 
+    from
+        category c1_0
+Hibernate: 
+    select
+        distinct n1_0.novel_id,
+        n1_0.author_id,
+        n1_0.collected_count,
+        n1_0.cover_url,
+        n1_0.create_time,
+        n1_0.introduction,
+        n1_0.novel_name,
+        n1_0.original_novel_id,
+        n1_0.recommend_count,
+        n1_0.score,
+        n1_0.status,
+        n1_0.total_price,
+        n1_0.total_word_count 
+    from
+        novel n1_0 
+    left join
+        novel_category nc1_0 
+            on n1_0.novel_id=nc1_0.novel_id 
+    where
+        (
+            n1_0.status='连载' 
+            or n1_0.status='完结'
+        ) 
+        and (
+            ? is null 
+            or nc1_0.category_name=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count>=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count<=?
+        ) 
+        and (
+            ? is null 
+            or (
+                ?=1 
+                and n1_0.status='完结'
+            ) 
+            or (
+                ?=0 
+                and n1_0.status='连载'
+            )
+        ) 
+    order by
+        n1_0.novel_id 
+    limit
+        ?
+Hibernate: 
+    select
+        count(distinct n1_0.novel_id) 
+    from
+        novel n1_0 
+    left join
+        novel_category nc1_0 
+            on n1_0.novel_id=nc1_0.novel_id 
+    where
+        (
+            n1_0.status='连载' 
+            or n1_0.status='完结'
+        ) 
+        and (
+            ? is null 
+            or nc1_0.category_name=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count>=?
+        ) 
+        and (
+            ? is null 
+            or n1_0.total_word_count<=?
+        ) 
+        and (
+            ? is null 
+            or (
+                ?=1 
+                and n1_0.status='完结'
+            ) 
+            or (
+                ?=0 
+                and n1_0.status='连载'
+            )
+        )

@@ -75,3 +75,93 @@ Error starting App2026-08-15T15:06:15.754Z  INFO 377404 --- [transaction-service
 2026-08-15T15:06:15.755Z  INFO 377404 --- [transaction-service] [nio-7083-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2026-08-15T15:06:15.758Z  INFO 377404 --- [transaction-service] [nio-7083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
 Hibernate: select t1_0.transaction_id,t1_0.amount,t1_0.reader_id,t1_0.time,t1_0.trans_type from transaction t1_0
+2026-08-16T03:44:09.872Z  INFO 377404 --- [transaction-service] [nio-7083-exec-4] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 7
+2026-08-16T03:44:09.873Z  INFO 377404 --- [transaction-service] [nio-7083-exec-7] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 5
+2026-08-16T03:44:09.874Z  INFO 377404 --- [transaction-service] [nio-7083-exec-6] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 8
+2026-08-16T03:44:09.874Z  INFO 377404 --- [transaction-service] [nio-7083-exec-5] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 6
+2026-08-16T03:44:09.872Z  INFO 377404 --- [transaction-service] [nio-7083-exec-3] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 4
+2026-08-16T03:44:09.874Z  INFO 377404 --- [transaction-service] [nio-7083-exec-2] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 9
+2026-08-16T03:44:10.322Z  INFO 377404 --- [transaction-service] [nio-7083-exec-4] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 7, 是否收费: true, 价格: 249
+2026-08-16T03:44:10.323Z  INFO 377404 --- [transaction-service] [nio-7083-exec-5] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 6, 是否收费: true, 价格: 232
+2026-08-16T03:44:10.323Z  INFO 377404 --- [transaction-service] [nio-7083-exec-2] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 9, 是否收费: true, 价格: 297
+2026-08-16T03:44:10.324Z  INFO 377404 --- [transaction-service] [nio-7083-exec-7] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 5, 是否收费: true, 价格: 278
+2026-08-16T03:44:10.324Z  INFO 377404 --- [transaction-service] [nio-7083-exec-6] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 8, 是否收费: true, 价格: 243
+2026-08-16T03:44:10.325Z  INFO 377404 --- [transaction-service] [nio-7083-exec-3] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 4, 是否收费: true, 价格: 286
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+2026-08-16T03:44:10.666Z  INFO 377404 --- [transaction-service] [nio-7083-exec-8] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 11
+2026-08-16T03:44:10.688Z  INFO 377404 --- [transaction-service] [nio-7083-exec-8] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 11, 是否收费: true, 价格: 292
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+2026-08-16T03:44:10.704Z  INFO 377404 --- [transaction-service] [nio-7083-exec-9] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 13
+2026-08-16T03:44:10.736Z  INFO 377404 --- [transaction-service] [nio-7083-exec-1] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 10
+2026-08-16T03:44:10.738Z  INFO 377404 --- [transaction-service] [io-7083-exec-10] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 12
+2026-08-16T03:44:10.740Z  INFO 377404 --- [transaction-service] [nio-7083-exec-9] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 13, 是否收费: true, 价格: 263
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+2026-08-16T03:44:10.770Z  INFO 377404 --- [transaction-service] [io-7083-exec-10] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 12, 是否收费: true, 价格: 244
+2026-08-16T03:44:10.770Z  INFO 377404 --- [transaction-service] [nio-7083-exec-1] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 10, 是否收费: true, 价格: 246
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+2026-08-16T03:44:13.651Z  INFO 377404 --- [transaction-service] [nio-7083-exec-3] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 6
+2026-08-16T03:44:13.653Z  INFO 377404 --- [transaction-service] [nio-7083-exec-4] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 9
+2026-08-16T03:44:13.670Z  INFO 377404 --- [transaction-service] [nio-7083-exec-7] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 4
+2026-08-16T03:44:13.672Z  INFO 377404 --- [transaction-service] [nio-7083-exec-5] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 5
+2026-08-16T03:44:13.677Z  INFO 377404 --- [transaction-service] [nio-7083-exec-6] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 8
+2026-08-16T03:44:13.684Z  INFO 377404 --- [transaction-service] [nio-7083-exec-4] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 9, 是否收费: true, 价格: 297
+2026-08-16T03:44:13.685Z  INFO 377404 --- [transaction-service] [nio-7083-exec-3] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 6, 是否收费: true, 价格: 232
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+2026-08-16T03:44:13.701Z  INFO 377404 --- [transaction-service] [nio-7083-exec-3] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 7
+2026-08-16T03:44:13.711Z  INFO 377404 --- [transaction-service] [nio-7083-exec-5] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 5, 是否收费: true, 价格: 278
+2026-08-16T03:44:13.713Z  INFO 377404 --- [transaction-service] [nio-7083-exec-7] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 4, 是否收费: true, 价格: 286
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+2026-08-16T03:44:13.720Z  INFO 377404 --- [transaction-service] [nio-7083-exec-6] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 8, 是否收费: true, 价格: 243
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+2026-08-16T03:44:13.738Z  INFO 377404 --- [transaction-service] [nio-7083-exec-3] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 7, 是否收费: true, 价格: 249
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+2026-08-16T03:44:13.931Z  INFO 377404 --- [transaction-service] [nio-7083-exec-8] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 10
+2026-08-16T03:44:13.948Z  INFO 377404 --- [transaction-service] [nio-7083-exec-8] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 10, 是否收费: true, 价格: 246
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+2026-08-16T03:44:13.958Z  INFO 377404 --- [transaction-service] [nio-7083-exec-9] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 11
+2026-08-16T03:44:13.973Z  INFO 377404 --- [transaction-service] [nio-7083-exec-9] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 11, 是否收费: true, 价格: 292
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+2026-08-16T03:44:13.998Z  INFO 377404 --- [transaction-service] [nio-7083-exec-1] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 13
+2026-08-16T03:44:13.998Z  INFO 377404 --- [transaction-service] [io-7083-exec-10] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 12
+2026-08-16T03:44:14.020Z  INFO 377404 --- [transaction-service] [nio-7083-exec-1] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 13, 是否收费: true, 价格: 263
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+2026-08-16T03:44:14.022Z  INFO 377404 --- [transaction-service] [io-7083-exec-10] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 12, 是否收费: true, 价格: 244
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+2026-08-16T03:44:40.839Z  INFO 377404 --- [transaction-service] [nio-7083-exec-2] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 9
+2026-08-16T03:44:40.859Z  INFO 377404 --- [transaction-service] [nio-7083-exec-7] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 7
+2026-08-16T03:44:40.859Z  INFO 377404 --- [transaction-service] [nio-7083-exec-4] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 5
+2026-08-16T03:44:40.864Z  INFO 377404 --- [transaction-service] [nio-7083-exec-5] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 4
+2026-08-16T03:44:40.871Z  INFO 377404 --- [transaction-service] [nio-7083-exec-6] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 8
+2026-08-16T03:44:40.870Z  INFO 377404 --- [transaction-service] [nio-7083-exec-3] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 6
+2026-08-16T03:44:40.872Z  INFO 377404 --- [transaction-service] [nio-7083-exec-2] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 9, 是否收费: true, 价格: 297
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+2026-08-16T03:44:40.883Z  INFO 377404 --- [transaction-service] [nio-7083-exec-4] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 5, 是否收费: true, 价格: 278
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+2026-08-16T03:44:40.909Z  INFO 377404 --- [transaction-service] [nio-7083-exec-5] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 4, 是否收费: true, 价格: 286
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+2026-08-16T03:44:40.917Z  INFO 377404 --- [transaction-service] [nio-7083-exec-7] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 7, 是否收费: true, 价格: 249
+2026-08-16T03:44:40.922Z  INFO 377404 --- [transaction-service] [nio-7083-exec-3] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 6, 是否收费: true, 价格: 232
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+2026-08-16T03:44:40.925Z  INFO 377404 --- [transaction-service] [nio-7083-exec-6] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 8, 是否收费: true, 价格: 243
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+2026-08-16T03:44:41.137Z  INFO 377404 --- [transaction-service] [nio-7083-exec-8] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 10
+2026-08-16T03:44:41.151Z  INFO 377404 --- [transaction-service] [nio-7083-exec-8] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 10, 是否收费: true, 价格: 246
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+2026-08-16T03:44:41.161Z  INFO 377404 --- [transaction-service] [nio-7083-exec-9] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 11
+2026-08-16T03:44:41.175Z  INFO 377404 --- [transaction-service] [nio-7083-exec-9] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 11, 是否收费: true, 价格: 292
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+2026-08-16T03:44:41.188Z  INFO 377404 --- [transaction-service] [nio-7083-exec-1] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 12
+2026-08-16T03:44:41.204Z  INFO 377404 --- [transaction-service] [nio-7083-exec-1] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 12, 是否收费: true, 价格: 244
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
+2026-08-16T03:44:41.209Z  INFO 377404 --- [transaction-service] [io-7083-exec-10] e.t.t.service.PurchaseService            : 开始获取章节价格信息，小说ID: 32, 章节ID: 13
+2026-08-16T03:44:41.230Z  INFO 377404 --- [transaction-service] [io-7083-exec-10] e.t.t.service.PurchaseService            : 获取章节价格信息成功，小说ID: 32, 章节ID: 13, 是否收费: true, 价格: 263
+Hibernate: select case when count(p1_0.transaction_id)>0 then 1 else 0 end from purchase p1_0 join transaction t1_0 on p1_0.transaction_id=t1_0.transaction_id where t1_0.reader_id=? and p1_0.novel_id=? and p1_0.chapter_id=?
