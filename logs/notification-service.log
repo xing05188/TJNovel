@@ -8,56 +8,34 @@
 
  :: Spring Boot ::                (v3.3.5)
 
-2026-08-15T06:37:25.354Z  INFO 9752 --- [notification-service] [           main] e.t.n.NotificationServiceApplication     : Starting NotificationServiceApplication using Java 17.0.19 with PID 9752 (/home/zhx/TJNovel/backend/notification-service/target/notification-service-0.0.1-SNAPSHOT.jar started by zhx in /home/zhx)
-2026-08-15T06:37:25.406Z  INFO 9752 --- [notification-service] [           main] e.t.n.NotificationServiceApplication     : No active profile set, falling back to 1 default profile: "default"
-2026-08-15T06:37:47.488Z  INFO 9752 --- [notification-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 7085 (http)
-2026-08-15T06:37:47.627Z  INFO 9752 --- [notification-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-08-15T06:37:47.627Z  INFO 9752 --- [notification-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
-2026-08-15T06:37:48.144Z  INFO 9752 --- [notification-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-08-15T06:37:48.155Z  INFO 9752 --- [notification-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 21787 ms
-2026-08-15T06:37:56.446Z  WARN 9752 --- [notification-service] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+2026-08-15T15:02:14.375Z  INFO 381403 --- [notification-service] [           main] e.t.n.NotificationServiceApplication     : Starting NotificationServiceApplication using Java 21.0.11 with PID 381403 (/home/zhx/TJNovel/backend/notification-service/target/notification-service-0.0.1-SNAPSHOT.jar started by zhx in /home/zhx/TJNovel)
+2026-08-15T15:02:14.413Z  INFO 381403 --- [notification-service] [           main] e.t.n.NotificationServiceApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-08-15T15:02:33.510Z  INFO 381403 --- [notification-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 7085 (http)
+2026-08-15T15:02:33.643Z  INFO 381403 --- [notification-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-15T15:02:33.644Z  INFO 381403 --- [notification-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-08-15T15:02:33.859Z  INFO 381403 --- [notification-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-08-15T15:02:33.873Z  INFO 381403 --- [notification-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 18822 ms
+2026-08-15T15:02:40.922Z  WARN 381403 --- [notification-service] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 56c09a1f-f449-41f7-8414-db01abcfce03
+Using generated security password: 60f26d2c-2ad6-4d4e-bba7-2f6b203809c0
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2026-08-15T06:37:56.706Z  INFO 9752 --- [notification-service] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
-2026-08-15T06:37:59.857Z  INFO 9752 --- [notification-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-08-15T06:38:05.113Z  INFO 9752 --- [notification-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 7085 (http) with context path '/'
-2026-08-15T06:38:05.157Z  INFO 9752 --- [notification-service] [           main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2026-08-15T06:38:05.900Z  INFO 9752 --- [notification-service] [           main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#1cd2143b:0/SimpleConnection@29519337 [delegate=amqp://tjnovel@127.0.0.1:5672/, localPort=40028]
-2026-08-15T06:38:06.753Z  INFO 9752 --- [notification-service] [           main] e.t.n.NotificationServiceApplication     : Started NotificationServiceApplication in 47.378 seconds (process running for 52.474)
-2026-08-15T06:38:08.799Z  INFO 9752 --- [notification-service] [nio-7085-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-08-15T06:38:08.800Z  INFO 9752 --- [notification-service] [nio-7085-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-08-15T06:38:08.841Z  INFO 9752 --- [notification-service] [nio-7085-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 38 ms
-2026-08-15T06:48:05.102Z  INFO 9752 --- [notification-service] [io-7085-exec-10] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=d0779845-fca6-483e-7529-84a8750d7f96
-2026-08-15T07:13:11.545Z  INFO 9752 --- [notification-service] [nio-7085-exec-1] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=6ea3c83c-11c4-85ce-f9ad-66640a23d80b
-2026-08-15T07:15:38.029Z  INFO 9752 --- [notification-service] [nio-7085-exec-2] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=f4b8c7ed-f1ae-79d0-a4c4-2f229f42878f
-2026-08-15T07:23:58.290Z  INFO 9752 --- [notification-service] [nio-7085-exec-6] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=04932964-6631-d018-44f3-cf292c96476a
-2026-08-15T07:32:26.019Z  INFO 9752 --- [notification-service] [nio-7085-exec-7] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=64b52c8e-29ab-c0ef-098a-6a504a1fa82f
-2026-08-15T07:34:31.680Z  INFO 9752 --- [notification-service] [ntContainer#1-1] e.t.n.service.NotificationConsumer       : 收到订单事件: 充值成功
-2026-08-15T07:35:16.609Z  INFO 9752 --- [notification-service] [nio-7085-exec-9] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=04532468-9739-4ad2-2343-8efc0608c5cc
-2026-08-15T07:35:51.819Z  INFO 9752 --- [notification-service] [ntContainer#1-1] e.t.n.service.NotificationConsumer       : 收到订单事件: 充值成功
-2026-08-15T07:37:12.486Z  INFO 9752 --- [notification-service] [nio-7085-exec-3] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=3f306e1b-a326-de18-a9b8-651df8ac04b8
-2026-08-15T07:46:03.833Z  INFO 9752 --- [notification-service] [nio-7085-exec-2] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=61e56dcb-0ed3-cdc5-bcd4-decf93b4d24a
-2026-08-15T07:46:04.604Z  INFO 9752 --- [notification-service] [nio-7085-exec-4] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=69459b3a-d68f-7071-ec9f-16fbbdc72433
-2026-08-15T07:49:02.409Z  INFO 9752 --- [notification-service] [ntContainer#1-1] e.t.n.service.NotificationConsumer       : 收到订单事件: 充值成功
-2026-08-15T07:50:36.236Z  INFO 9752 --- [notification-service] [nio-7085-exec-7] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=0fed49de-eb1a-4950-da11-49aaa1bf39c3
-2026-08-15T07:51:21.549Z  INFO 9752 --- [notification-service] [ntContainer#1-1] e.t.n.service.NotificationConsumer       : 收到订单事件: 充值成功
-2026-08-15T07:58:48.286Z  INFO 9752 --- [notification-service] [nio-7085-exec-8] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=073eacad-28b3-b99f-1dc8-5a1cc45cbd9b
-2026-08-15T07:59:21.985Z  INFO 9752 --- [notification-service] [ntContainer#1-1] e.t.n.service.NotificationConsumer       : 收到订单事件: 充值成功
-2026-08-15T08:00:31.668Z  INFO 9752 --- [notification-service] [nio-7085-exec-3] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=874af4c7-80f7-508b-69c7-0c5256db87fc
-2026-08-15T08:01:08.040Z  INFO 9752 --- [notification-service] [ntContainer#1-1] e.t.n.service.NotificationConsumer       : 收到订单事件: 章节购买成功
-2026-08-15T08:09:44.080Z  INFO 9752 --- [notification-service] [nio-7085-exec-5] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=0775998a-7805-a976-eeaa-48a2caf8d1c3
-2026-08-15T08:11:06.727Z  INFO 9752 --- [notification-service] [nio-7085-exec-2] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=47c8f173-d48a-75d9-fde5-f579a83e2b70
-2026-08-15T08:16:47.696Z  INFO 9752 --- [notification-service] [nio-7085-exec-6] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=964bba13-95be-f4cb-f1fb-aec0a1a60910
-2026-08-15T08:18:10.728Z  INFO 9752 --- [notification-service] [nio-7085-exec-9] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=50d719b3-2275-c27c-4cd2-b75fe3eba6f7
-2026-08-15T08:22:10.667Z  INFO 9752 --- [notification-service] [nio-7085-exec-1] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=a72d5e6c-c4c3-4bfd-1f81-047baf1d51fc
-2026-08-15T08:22:10.679Z  INFO 9752 --- [notification-service] [nio-7085-exec-5] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=a65b6b48-57e7-14c3-af45-320f28479948
-2026-08-15T08:23:32.897Z  INFO 9752 --- [notification-service] [nio-7085-exec-2] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=73a6d110-3e62-ea80-557b-4ac16c402428
-2026-08-15T08:29:13.667Z  INFO 9752 --- [notification-service] [nio-7085-exec-7] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=d488fec9-9785-315f-a6be-41c8e8fc8e49
-2026-08-15T08:29:13.676Z  INFO 9752 --- [notification-service] [nio-7085-exec-8] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=f48441ed-afd9-1b5d-d29e-a362e7ea185a
-2026-08-15T08:30:36.700Z  INFO 9752 --- [notification-service] [io-7085-exec-10] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=65cea536-b819-c4b8-5181-fd566c38dcce
-2026-08-15T08:33:05.482Z  INFO 9752 --- [notification-service] [ntContainer#0-1] e.t.n.service.NotificationConsumer       : 收到小说更新通知: 《星辰之巅》更新啦
-2026-08-15T08:34:50.003Z  INFO 9752 --- [notification-service] [ntContainer#0-1] e.t.n.service.NotificationConsumer       : 收到小说更新通知: 《星辰之巅》更新啦
-2026-08-15T08:35:24.261Z  INFO 9752 --- [notification-service] [nio-7085-exec-1] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=68102e2b-b9b6-7289-bb9b-a18142118583
+2026-08-15T15:02:41.024Z  INFO 381403 --- [notification-service] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-08-15T15:02:44.049Z  INFO 381403 --- [notification-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-08-15T15:02:48.857Z  WARN 381403 --- [notification-service] [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-08-15T15:02:49.112Z  INFO 381403 --- [notification-service] [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-08-15T15:02:49.238Z ERROR 381403 --- [notification-service] [           main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 7085 was alre2026-08-15T15:13:20.242Z  INFO 377406 --- [notification-service] [nio-7085-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-15T15:13:20.243Z  INFO 377406 --- [notification-service] [nio-7085-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-08-15T15:13:20.245Z  INFO 377406 --- [notification-service] [nio-7085-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-08-15T15:13:20.383Z  INFO 377406 --- [notification-service] [nio-7085-exec-1] e.t.n.s.NotificationWebSocketHandler     : 通知WebSocket连接建立: userId=9, sessionId=fd85ecba-495c-1940-38f5-ee71bf359d0f

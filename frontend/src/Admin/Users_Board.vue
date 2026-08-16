@@ -41,13 +41,13 @@
       </thead>
       <tbody>
         <tr v-for="user in filteredUsers" :key="user.id">
-          <!-- 头像逻辑：支持 OSS URL 拼接，无图回退默认头像 -->
+          <!-- 头像逻辑：兼容完整URL / MinIO内网地址 / OSS相对路径，无图回退默认头像 -->
           <td>
             <img
-              :src="user.avatar ? `https://novelprogram123.oss-cn-hangzhou.aliyuncs.com/${user.avatar}` : require('@/assets/default-avatar.jpeg')"
+              :src="getFullAvatarUrl(user.avatar)"
               alt="头像"
               class="avatar"
-              @error="e => e.target.src = require('@/assets/default-avatar.jpeg')"
+              @error="handleAvatarError"
             />
           </td>
 
@@ -69,8 +69,39 @@ import { ref, computed, watch, onMounted } from 'vue'
 import { getAllReaders, getAllAuthors, deleteReader, deleteAuthorWithNovels } from '@/API/UserManage_API.js'
 import { toast } from 'vue3-toastify'
 import 'vue3-toastify/dist/index.css'
+import defaultAvatar from '@/assets/default-avatar.jpeg'
 
 const userType = ref('reader')
+
+// 格式化头像URL：兼容 MinIO 内网地址 / 完整 URL / OSS 相对路径
+function getFullAvatarUrl(avatarUrl) {
+  const ossBase = 'https://novelprogram123.oss-cn-hangzhou.aliyuncs.com/'
+
+  if (!avatarUrl || avatarUrl.trim() === '' || avatarUrl === 'null' || avatarUrl === 'undefined') {
+    return defaultAvatar
+  }
+
+  // MinIO 内网地址(localhost:9000) → 走前端代理(8086)
+  if (avatarUrl.indexOf('localhost:9000') !== -1) {
+    return '/minio/' + avatarUrl.substring(avatarUrl.indexOf('localhost:9000/') + 'localhost:9000/'.length)
+  }
+
+  // 如果已经是完整URL，直接返回
+  if (avatarUrl.startsWith('http://') || avatarUrl.startsWith('https://')) {
+    return avatarUrl
+  }
+
+  // 相对路径：移除开头的斜杠后拼接 OSS 域名
+  const cleanPath = avatarUrl.replace(/^\//, '')
+  return ossBase + cleanPath
+}
+
+// 头像加载错误时回退默认头像
+function handleAvatarError(event) {
+  if (event.target.src !== defaultAvatar) {
+    event.target.src = defaultAvatar
+  }
+}
 
 const readers = ref([])
 const authors = ref([])
