@@ -171,7 +171,16 @@ async function handleRead() {
                 reader_state.readerId,
                 selectNovelState.novelId
             );
-            chapterIdToRead = lastReadResponse || 1;
+            // 兼容返回数字、数字字符串或对象（可能包含 chapterId/id 字段）的多种格式，
+            // 避免把对象直接拼进 URL 导致 /Chapter/4/[object Object]
+            const raw = lastReadResponse;
+            const parsed =
+                raw && typeof raw === 'object'
+                    ? Number(raw.chapterId ?? raw.id ?? raw.chapter_id)
+                    : Number(raw);
+            if (!Number.isNaN(parsed) && parsed > 0) {
+                chapterIdToRead = parsed;
+            }
         } catch (error) {
             console.warn("获取阅读历史失败，使用默认第1章:", error);
             chapterIdToRead = 1;

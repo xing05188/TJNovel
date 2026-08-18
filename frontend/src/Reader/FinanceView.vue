@@ -83,9 +83,9 @@
                v-for="record in paginatedRecords" 
                    :key="record.transactionId"
                    >
-                <td class="amount-cell">{{ record.rechargeAmount }}</td>
-                <td class="amount-cell">{{ record.virtualCoin }}</td>
-                 <td>{{ formatDate(record.rechargeTime) }}</td>
+                <td class="amount-cell">{{ (Number(record.amount) / 100) }}</td>
+                <td class="amount-cell">{{ record.amount }}</td>
+                 <td>{{ formatDate(record.time) }}</td>
         </tr>
              </tbody>
         </table>
@@ -120,8 +120,7 @@
           <thead>
             <tr>
               <th>订单虚拟币</th>
-              <th>订阅小说</th>
-              <th>订阅章节</th>
+              <th>交易类型</th>
               <th>订阅时间</th>
             </tr>
           </thead>
@@ -134,10 +133,9 @@
         v-for="record in paginatedRecords" 
         :key="record.transactionId"
       >
-        <td class="amount-cell">{{ record.consumeAmount }}</td>
-        <td>{{ record.novelTitle }}</td>
-        <td>{{ record.chapterId }}</td>
-        <td>{{ formatDate(record.consumeTime) }}</td>
+        <td class="amount-cell">{{ record.amount }}</td>
+        <td>{{ record.transType }}</td>
+        <td>{{ formatDate(record.time) }}</td>
       </tr>
     </tbody>
         </table>
@@ -147,7 +145,7 @@
   <table v-if="activeTab === 'gifts'">
     <thead>
       <tr>
-        <th>打赏小说</th>
+        <th>交易类型</th>
         <th>打赏虚拟币</th>
         <th>打赏时间</th>
       </tr>
@@ -161,9 +159,9 @@
         v-for="record in paginatedRecords" 
         :key="record.transactionId"
       >
-        <td>{{ record.novelTitle }}</td>
+        <td>{{ record.transType }}</td>
         <td class="amount-cell">{{ record.amount }}</td>
-        <td>{{ formatDate(record.rewardTime) }}</td>
+        <td>{{ formatDate(record.time) }}</td>
       </tr>
     </tbody>
   </table>

@@ -277,7 +277,7 @@ import { getCategoriesByNovel } from '@/API/NovelCategory_API';
 import { addOrUpdateCollect, deleteCollect } from '@/API/Collect_API';
 import { getNovelWordCount, getNovelRecommendCount, getNovelCollectCount, getLatestPublishedChapter } from '@/API/Novel_API';
 import { getAuthorNovelCount, getAuthorTotalWordCount, getAuthorRegisterDays } from '@/API/Author_API';
-import { getChapter } from '@/API/Chapter_API';
+import { getChapter, getNovelChaptersWithoutContent } from '@/API/Chapter_API';
 import { addRecommend, deleteRecommend } from '@/API/Recommend_API';
 import { getReaderBalance, addOrUpdateRecentReading, getLastReadChapterId } from '@/API/Reader_API';
 import { rewardNovel } from '@/API/Reward_API';
@@ -664,31 +664,58 @@ async function handleRead() {
         ReaderState.readerId,
         selectNovelState.novelId
       );
-      chapterIdToRead = lastReadResponse || 1;
+      // 兼容返回数字、数字字符串或对象（可能包含 chapterId/id 字段）的多种格式，
+      // 避免把对象直接拼进 URL 导致 /Chapter/4/[object Object]
+      const raw = lastReadResponse;
+      const parsed =
+        raw && typeof raw === 'object'
+          ? Number(raw.chapterId ?? raw.id ?? raw.chapter_id)
+          : Number(raw);
+      if (!Number.isNaN(parsed) && parsed > 0) {
+        chapterIdToRead = parsed;
+      }
     } catch (error) {
       console.warn("获取阅读历史失败，使用默认第1章:", error);
       chapterIdToRead = 1;
     }
     // 使用 let 声明 response，因为后面可能需要重新赋值
-    let response = await getChapter(selectNovelState.novelId, chapterIdToRead);
-    if (response.status === '首次审核' || response.status === '草稿') {
-      toast(`暂无第${chapterIdToRead}章`, {
+    let response = null;
+    // 判断章节是否可读：草稿、首次审核、审核中均不可读
+    const isReadable = (ch) =>
+      ch && ch.status !== '草稿' && ch.status !== '首次审核' && ch.status !== '审核中';
+    // 获取目标章节；若章节不存在（可能已被删除）或不可读，则回退到第一篇可读章节
+    try {
+      response = await getChapter(selectNovelState.novelId, chapterIdToRead);
+    } catch (err) {
+      console.warn(`获取第${chapterIdToRead}章失败（可能已被删除）:`, err);
+      response = null;
+    }
+    if (!isReadable(response)) {
+      toast(`暂无第${chapterIdToRead}章，已为你跳转到可阅读章节`, {
         "type": "info",
         "dangerouslyHTMLString": true
       });
-      // 如果目标章节不存在，尝试获取第1章
-      if (chapterIdToRead !== 1) {
-        try {
-          const firstChapterResponse = await getChapter(selectNovelState.novelId, 1);
-          if (firstChapterResponse.status !== '首次审核' && firstChapterResponse.status !== '草稿') {
-            chapterIdToRead = 1;
-            response = firstChapterResponse;
-          }
-        } catch (fallbackError) {
-          console.error("获取第1章也失败:", fallbackError);
+      try {
+        const allChapters = await getNovelChaptersWithoutContent(selectNovelState.novelId);
+        const readableChapters = (Array.isArray(allChapters) ? allChapters : [])
+          .filter(isReadable)
+          .sort((a, b) => a.chapterId - b.chapterId);
+        if (readableChapters.length === 0) {
+          toast("该作品暂无可阅读章节", {
+            "type": "info",
+            "dangerouslyHTMLString": true
+          });
           return;
         }
-      } else {
+        // 切换到第一篇可读（已发布）章节
+        chapterIdToRead = readableChapters[0].chapterId;
+        response = await getChapter(selectNovelState.novelId, chapterIdToRead);
+      } catch (fallbackError) {
+        console.error("获取可阅读章节失败:", fallbackError);
+        toast("获取章节信息失败，请稍后重试", {
+          "type": "error",
+          "dangerouslyHTMLString": true
+        });
         return;
       }
     }
